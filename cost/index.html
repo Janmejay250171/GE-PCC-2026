@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Cost Estimator - Healthcare Treatment & Procedure Cost Calculator</title>
+  <meta name="description" content="Estimate inpatient medical treatment costs across Indian hospitals based on location, tier, hospital segment, specialty, procedure, and room category.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loading State Overlay -->
+  <div id="loading-overlay" class="loading-overlay" role="status" aria-live="polite">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <h2 class="loading-title">Initializing Estimator</h2>
+      <p id="loading-status" class="loading-status">Loading hospital & pricing datasets...</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="brand-wrapper">
+          <div class="brand-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 6v12M6 12h12"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="site-title">Hospital Cost Estimator</h1>
+            <p class="site-tagline">Healthcare Pricing Intelligence Prototype</p>
+          </div>
+        </div>
+        <div class="header-badge">Deterministic Engine</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Hero / Intro -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h2 class="hero-heading">Estimate Treatment Costs</h2>
+        <p class="hero-subtext">
+          Estimate medical treatment costs based on hospital, location, clinical procedure, and room type across 50,000+ accredited healthcare facilities.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter / Calculator Form -->
+    <section class="calculator-card" aria-label="Cost Calculator Controls">
+      <form id="calculator-form" novalidate>
+        <div class="form-grid">
+          
+          <!-- City Input (Required) -->
+          <div class="form-group">
+            <label for="city-input">
+              City <span class="required-star" title="Required field">*</span>
+            </label>
+            <div class="input-wrapper">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <input 
+                type="text" 
+                id="city-input" 
+                class="form-control" 
+                placeholder="Type or select city..." 
+                list="city-datalist" 
+                autocomplete="off" 
+                required
+              >
+              <datalist id="city-datalist"></datalist>
+            </div>
+          </div>
+
+          <!-- Hospital Type Filter -->
+          <div class="form-group">
+            <label for="type-select">Hospital Type</label>
+            <select id="type-select" class="form-control no-icon">
+              <option value="Any">Any Type</option>
+              <option value="Government">Government</option>
+              <option value="Private">Private</option>
+            </select>
+          </div>
+
+          <!-- Specialty Filter -->
+          <div class="form-group">
+            <label for="specialty-select">Specialty</label>
+            <select id="specialty-select" class="form-control no-icon">
+              <option value="">Any Specialty</option>
+            </select>
+          </div>
+
+          <!-- Procedure Filter (Cascaded) -->
+          <div class="form-group">
+            <label for="procedure-select">Procedure</label>
+            <select id="procedure-select" class="form-control no-icon" disabled>
+              <option value="">Any Procedure</option>
+            </select>
+          </div>
+
+          <!-- Room Type Filter -->
+          <div class="form-group">
+            <label for="room-select">Room Type</label>
+            <select id="room-select" class="form-control no-icon">
+              <option value="General Ward" selected>General Ward</option>
+              <option value="Twin Sharing">Twin Sharing</option>
+              <option value="Single Private Room">Single Private Room</option>
+            </select>
+          </div>
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="estimate-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Estimate Cost
+            </button>
+            <button type="button" class="btn btn-secondary" id="reset-btn" title="Reset all filters">
+              Reset
+            </button>
+          </div>
+
+        </div>
+      </form>
+    </section>
+
+    <!-- Estimate Summary Banner -->
+    <section id="summary-banner" class="summary-banner hidden" aria-label="City Estimate Overview">
+      <div class="summary-header">
+        <div class="summary-title" id="summary-title">Estimate Overview</div>
+        <span id="summary-badge" class="status-pill badge-exact">Procedure Quotation</span>
+      </div>
+      <div class="summary-grid">
+        <div class="summary-stat-box">
+          <div class="stat-label">Estimated Range</div>
+          <div class="stat-value-large" id="summary-range">₹0 – ₹0</div>
+        </div>
+        <div class="summary-stat-box">
+          <div class="stat-label">Typical Estimate</div>
+          <div class="stat-value-large" id="summary-typical">₹0</div>
+        </div>
+        <div class="summary-stat-box">
+          <div class="stat-label">Estimated Inpatient Stay</div>
+          <div class="stat-value" id="summary-stay">0 days</div>
+        </div>
+        <div class="summary-stat-box">
+          <div class="stat-label">Room Category</div>
+          <div class="stat-value" id="summary-room">General Ward</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section & Toolbar -->
+    <section class="results-section" aria-label="Hospital Cost Results">
+      <div class="results-toolbar">
+        <div class="results-count" id="results-count">Loading hospitals...</div>
+        
+        <div class="sort-wrapper">
+          <label for="sort-select" class="sort-label">Sort by:</label>
+          <select id="sort-select" class="sort-select">
+            <option value="cost_asc">Lowest Estimated Cost</option>
+            <option value="cost_desc">Highest Estimated Cost</option>
+            <option value="rating">Highest Rating</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Hospital Cards Container -->
+      <div id="hospitals-container" class="hospitals-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more-wrapper">
+        <button id="load-more-btn" class="btn btn-load-more hidden">
+          Load More Hospitals
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Hospital Cost Estimator</strong> • Standalone Prototype for SehatSure
+      </div>
+      <div>
+        Deterministic calculation bounded by official dataset pricing ranges.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+tier,specialty,procedure,low_cost,highest_cost,mean_cost,estimated_stay_days,general_ward_cost_per_day,twin_sharing_cost_per_day,single_private_room_cost_per_day
+Metro 1,Cardiology,Angiography,11390,13400,13400,1,1500,3000,4500
+Metro 1,Cardiology,Angioplasty,82450,111550,97000,3,1500,3000,4500
+Metro 1,Cardiology,CABG,153000,207000,180000,10,1500,3000,4500
+Metro 1,Cardiology,Pacemaker,40205,54395,47300,3,1500,3000,4500
+Metro 1,Orthopedics,Knee Replacement,129200,174800,152000,4,1500,3000,4500
+Metro 1,Orthopedics,Hip Replacement,109650,148350,129000,5,1500,3000,4500
+Metro 1,Orthopedics,Fracture ORIF,36550,43000,43000,5,1500,3000,4500
+Metro 1,Orthopedics,Arthroscopy,36550,43000,43000,1,1500,3000,4500
+Metro 1,General Surgery,Appendectomy,28050,37950,33000,3,1500,3000,4500
+Metro 1,General Surgery,Hernia Repair,29750,40250,35000,2,1500,3000,4500
+Metro 1,General Surgery,Cholecystectomy,30855,41745,36300,3,1500,3000,4500
+Metro 1,Neurology,Brain/Spine Surgery,69700,94300,82000,10,1500,3000,4500
+Metro 1,Neurology,Laminectomy,45050,60950,53000,4,1500,3000,4500
+Metro 1,Neurology,EEG,850,1000,1000,0,1500,3000,4500
+Metro 1,Oncology,Chemotherapy,1955,2300,2300,0,1500,3000,4500
+Metro 1,Oncology,Cancer Surgery,29750,40250,35000,10,1500,3000,4500
+Metro 1,Oncology,Radiotherapy,42500,57500,50000,0,1500,3000,4500
+Metro 1,Gynecology,Normal Delivery,29750,35000,35000,3,1500,3000,4500
+Metro 1,Gynecology,C-Section,45050,53000,53000,4,1500,3000,4500
+Metro 1,Gynecology,Hysterectomy,36550,43000,43000,4,1500,3000,4500
+Metro 1,Urology,PCNL,45050,60950,53000,3,1500,3000,4500
+Metro 1,Urology,TURP,53550,72450,63000,3,1500,3000,4500
+Metro 1,Urology,Lithotripsy,36550,49450,43000,0,1500,3000,4500
+Metro 2,Cardiology,Angiography,11390,13400,13400,1,1500,3000,4500
+Metro 2,Cardiology,Angioplasty,82450,111550,97000,3,1500,3000,4500
+Metro 2,Cardiology,CABG,153000,207000,180000,10,1500,3000,4500
+Metro 2,Cardiology,Pacemaker,40205,54395,47300,3,1500,3000,4500
+Metro 2,Orthopedics,Knee Replacement,129200,174800,152000,4,1500,3000,4500
+Metro 2,Orthopedics,Hip Replacement,109650,148350,129000,5,1500,3000,4500
+Metro 2,Orthopedics,Fracture ORIF,36550,43000,43000,5,1500,3000,4500
+Metro 2,Orthopedics,Arthroscopy,36550,43000,43000,1,1500,3000,4500
+Metro 2,General Surgery,Appendectomy,28050,37950,33000,3,1500,3000,4500
+Metro 2,General Surgery,Hernia Repair,29750,40250,35000,2,1500,3000,4500
+Metro 2,General Surgery,Cholecystectomy,30855,41745,36300,3,1500,3000,4500
+Metro 2,Neurology,Brain/Spine Surgery,69700,94300,82000,10,1500,3000,4500
+Metro 2,Neurology,Laminectomy,45050,60950,53000,4,1500,3000,4500
+Metro 2,Neurology,EEG,850,1000,1000,0,1500,3000,4500
+Metro 2,Oncology,Chemotherapy,1955,2300,2300,0,1500,3000,4500
+Metro 2,Oncology,Cancer Surgery,29750,40250,35000,10,1500,3000,4500
+Metro 2,Oncology,Radiotherapy,42500,57500,50000,0,1500,3000,4500
+Metro 2,Gynecology,Normal Delivery,29750,35000,35000,3,1500,3000,4500
+Metro 2,Gynecology,C-Section,45050,53000,53000,4,1500,3000,4500
+Metro 2,Gynecology,Hysterectomy,36550,43000,43000,4,1500,3000,4500
+Metro 2,Urology,PCNL,45050,60950,53000,3,1500,3000,4500
+Metro 2,Urology,TURP,53550,72450,63000,3,1500,3000,4500
+Metro 2,Urology,Lithotripsy,36550,49450,43000,0,1500,3000,4500
+Large City 1,Cardiology,Angiography,10251,12060,12060,1,1350,2700,4050
+Large City 1,Cardiology,Angioplasty,74205,100395,87300,3,1350,2700,4050
+Large City 1,Cardiology,CABG,137700,186300,162000,10,1350,2700,4050
+Large City 1,Cardiology,Pacemaker,36185,48956,42570,3,1350,2700,4050
+Large City 1,Orthopedics,Knee Replacement,116280,157320,136800,4,1350,2700,4050
+Large City 1,Orthopedics,Hip Replacement,98685,133515,116100,5,1350,2700,4050
+Large City 1,Orthopedics,Fracture ORIF,32895,38700,38700,5,1350,2700,4050
+Large City 1,Orthopedics,Arthroscopy,32895,38700,38700,1,1350,2700,4050
+Large City 1,General Surgery,Appendectomy,25245,34155,29700,3,1350,2700,4050
+Large City 1,General Surgery,Hernia Repair,26775,36225,31500,2,1350,2700,4050
+Large City 1,General Surgery,Cholecystectomy,27770,37571,32670,3,1350,2700,4050
+Large City 1,Neurology,Brain/Spine Surgery,62730,84870,73800,10,1350,2700,4050
+Large City 1,Neurology,Laminectomy,40545,54855,47700,4,1350,2700,4050
+Large City 1,Neurology,EEG,765,900,900,0,1350,2700,4050
+Large City 1,Oncology,Chemotherapy,1760,2070,2070,0,1350,2700,4050
+Large City 1,Oncology,Cancer Surgery,26775,36225,31500,10,1350,2700,4050
+Large City 1,Oncology,Radiotherapy,38250,51750,45000,0,1350,2700,4050
+Large City 1,Gynecology,Normal Delivery,26775,31500,31500,3,1350,2700,4050
+Large City 1,Gynecology,C-Section,40545,47700,47700,4,1350,2700,4050
+Large City 1,Gynecology,Hysterectomy,32895,38700,38700,4,1350,2700,4050
+Large City 1,Urology,PCNL,40545,54855,47700,3,1350,2700,4050
+Large City 1,Urology,TURP,48195,65205,56700,3,1350,2700,4050
+Large City 1,Urology,Lithotripsy,32895,44505,38700,0,1350,2700,4050
+Large City 2,Cardiology,Angiography,10251,12060,12060,1,1350,2700,4050
+Large City 2,Cardiology,Angioplasty,74205,100395,87300,3,1350,2700,4050
+Large City 2,Cardiology,CABG,137700,186300,162000,10,1350,2700,4050
+Large City 2,Cardiology,Pacemaker,36185,48956,42570,3,1350,2700,4050
+Large City 2,Orthopedics,Knee Replacement,116280,157320,136800,4,1350,2700,4050
+Large City 2,Orthopedics,Hip Replacement,98685,133515,116100,5,1350,2700,4050
+Large City 2,Orthopedics,Fracture ORIF,32895,38700,38700,5,1350,2700,4050
+Large City 2,Orthopedics,Arthroscopy,32895,38700,38700,1,1350,2700,4050
+Large City 2,General Surgery,Appendectomy,25245,34155,29700,3,1350,2700,4050
+Large City 2,General Surgery,Hernia Repair,26775,36225,31500,2,1350,2700,4050
+Large City 2,General Surgery,Cholecystectomy,27770,37571,32670,3,1350,2700,4050
+Large City 2,Neurology,Brain/Spine Surgery,62730,84870,73800,10,1350,2700,4050
+Large City 2,Neurology,Laminectomy,40545,54855,47700,4,1350,2700,4050
+Large City 2,Neurology,EEG,765,900,900,0,1350,2700,4050
+Large City 2,Oncology,Chemotherapy,1760,2070,2070,0,1350,2700,4050
+Large City 2,Oncology,Cancer Surgery,26775,36225,31500,10,1350,2700,4050
+Large City 2,Oncology,Radiotherapy,38250,51750,45000,0,1350,2700,4050
+Large City 2,Gynecology,Normal Delivery,26775,31500,31500,3,1350,2700,4050
+Large City 2,Gynecology,C-Section,40545,47700,47700,4,1350,2700,4050
+Large City 2,Gynecology,Hysterectomy,32895,38700,38700,4,1350,2700,4050
+Large City 2,Urology,PCNL,40545,54855,47700,3,1350,2700,4050
+Large City 2,Urology,TURP,48195,65205,56700,3,1350,2700,4050
+Large City 2,Urology,Lithotripsy,32895,44505,38700,0,1350,2700,4050
+City 1,Cardiology,Angiography,10251,12060,12060,1,1200,2400,3600
+City 1,Cardiology,Angioplasty,74205,100395,87300,3,1200,2400,3600
+City 1,Cardiology,CABG,137700,186300,162000,10,1200,2400,3600
+City 1,Cardiology,Pacemaker,36185,48956,42570,3,1200,2400,3600
+City 1,Orthopedics,Knee Replacement,116280,157320,136800,4,1200,2400,3600
+City 1,Orthopedics,Hip Replacement,98685,133515,116100,5,1200,2400,3600
+City 1,Orthopedics,Fracture ORIF,32895,38700,38700,5,1200,2400,3600
+City 1,Orthopedics,Arthroscopy,32895,38700,38700,1,1200,2400,3600
+City 1,General Surgery,Appendectomy,25245,34155,29700,3,1200,2400,3600
+City 1,General Surgery,Hernia Repair,26775,36225,31500,2,1200,2400,3600
+City 1,General Surgery,Cholecystectomy,27770,37571,32670,3,1200,2400,3600
+City 1,Neurology,Brain/Spine Surgery,62730,84870,73800,10,1200,2400,3600
+City 1,Neurology,Laminectomy,40545,54855,47700,4,1200,2400,3600
+City 1,Neurology,EEG,765,900,900,0,1200,2400,3600
+City 1,Oncology,Chemotherapy,1760,2070,2070,0,1200,2400,3600
+City 1,Oncology,Cancer Surgery,26775,36225,31500,10,1200,2400,3600
+City 1,Oncology,Radiotherapy,38250,51750,45000,0,1200,2400,3600
+City 1,Gynecology,Normal Delivery,26775,31500,31500,3,1200,2400,3600
+City 1,Gynecology,C-Section,40545,47700,47700,4,1200,2400,3600
+City 1,Gynecology,Hysterectomy,32895,38700,38700,4,1200,2400,3600
+City 1,Urology,PCNL,40545,54855,47700,3,1200,2400,3600
+City 1,Urology,TURP,48195,65205,56700,3,1200,2400,3600
+City 1,Urology,Lithotripsy,32895,44505,38700,0,1200,2400,3600
+City 2,Cardiology,Angiography,10251,12060,12060,1,1200,2400,3600
+City 2,Cardiology,Angioplasty,74205,100395,87300,3,1200,2400,3600
+City 2,Cardiology,CABG,137700,186300,162000,10,1200,2400,3600
+City 2,Cardiology,Pacemaker,36185,48956,42570,3,1200,2400,3600
+City 2,Orthopedics,Knee Replacement,116280,157320,136800,4,1200,2400,3600
+City 2,Orthopedics,Hip Replacement,98685,133515,116100,5,1200,2400,3600
+City 2,Orthopedics,Fracture ORIF,32895,38700,38700,5,1200,2400,3600
+City 2,Orthopedics,Arthroscopy,32895,38700,38700,1,1200,2400,3600
+City 2,General Surgery,Appendectomy,25245,34155,29700,3,1200,2400,3600
+City 2,General Surgery,Hernia Repair,26775,36225,31500,2,1200,2400,3600
+City 2,General Surgery,Cholecystectomy,27770,37571,32670,3,1200,2400,3600
+City 2,Neurology,Brain/Spine Surgery,62730,84870,73800,10,1200,2400,3600
+City 2,Neurology,Laminectomy,40545,54855,47700,4,1200,2400,3600
+City 2,Neurology,EEG,765,900,900,0,1200,2400,3600
+City 2,Oncology,Chemotherapy,1760,2070,2070,0,1200,2400,3600
+City 2,Oncology,Cancer Surgery,26775,36225,31500,10,1200,2400,3600
+City 2,Oncology,Radiotherapy,38250,51750,45000,0,1200,2400,3600
+City 2,Gynecology,Normal Delivery,26775,31500,31500,3,1200,2400,3600
+City 2,Gynecology,C-Section,40545,47700,47700,4,1200,2400,3600
+City 2,Gynecology,Hysterectomy,32895,38700,38700,4,1200,2400,3600
+City 2,Urology,PCNL,40545,54855,47700,3,1200,2400,3600
+City 2,Urology,TURP,48195,65205,56700,3,1200,2400,3600
+City 2,Urology,Lithotripsy,32895,44505,38700,0,1200,2400,3600
+Town 1,Cardiology,Angiography,9112,10720,10720,1,1050,2100,3150
+Town 1,Cardiology,Angioplasty,65960,89240,77600,3,1050,2100,3150
+Town 1,Cardiology,CABG,122400,165600,144000,10,1050,2100,3150
+Town 1,Cardiology,Pacemaker,32164,43516,37840,3,1050,2100,3150
+Town 1,Orthopedics,Knee Replacement,103360,139840,121600,4,1050,2100,3150
+Town 1,Orthopedics,Hip Replacement,87720,118680,103200,5,1050,2100,3150
+Town 1,Orthopedics,Fracture ORIF,29240,34400,34400,5,1050,2100,3150
+Town 1,Orthopedics,Arthroscopy,29240,34400,34400,1,1050,2100,3150
+Town 1,General Surgery,Appendectomy,22440,30360,26400,3,1050,2100,3150
+Town 1,General Surgery,Hernia Repair,23800,32200,28000,2,1050,2100,3150
+Town 1,General Surgery,Cholecystectomy,24684,33396,29040,3,1050,2100,3150
+Town 1,Neurology,Brain/Spine Surgery,55760,75440,65600,10,1050,2100,3150
+Town 1,Neurology,Laminectomy,36040,48760,42400,4,1050,2100,3150
+Town 1,Neurology,EEG,680,800,800,0,1050,2100,3150
+Town 1,Oncology,Chemotherapy,1564,1840,1840,0,1050,2100,3150
+Town 1,Oncology,Cancer Surgery,23800,32200,28000,10,1050,2100,3150
+Town 1,Oncology,Radiotherapy,34000,46000,40000,0,1050,2100,3150
+Town 1,Gynecology,Normal Delivery,23800,28000,28000,3,1050,2100,3150
+Town 1,Gynecology,C-Section,36040,42400,42400,4,1050,2100,3150
+Town 1,Gynecology,Hysterectomy,29240,34400,34400,4,1050,2100,3150
+Town 1,Urology,PCNL,36040,48760,42400,3,1050,2100,3150
+Town 1,Urology,TURP,42840,57960,50400,3,1050,2100,3150
+Town 1,Urology,Lithotripsy,29240,39560,34400,0,1050,2100,3150
+Town 2,Cardiology,Angiography,9112,10720,10720,1,1000,2000,3000
+Town 2,Cardiology,Angioplasty,65960,89240,77600,3,1000,2000,3000
+Town 2,Cardiology,CABG,122400,165600,144000,10,1000,2000,3000
+Town 2,Cardiology,Pacemaker,32164,43516,37840,3,1000,2000,3000
+Town 2,Orthopedics,Knee Replacement,103360,139840,121600,4,1000,2000,3000
+Town 2,Orthopedics,Hip Replacement,87720,118680,103200,5,1000,2000,3000
+Town 2,Orthopedics,Fracture ORIF,29240,34400,34400,5,1000,2000,3000
+Town 2,Orthopedics,Arthroscopy,29240,34400,34400,1,1000,2000,3000
+Town 2,General Surgery,Appendectomy,22440,30360,26400,3,1000,2000,3000
+Town 2,General Surgery,Hernia Repair,23800,32200,28000,2,1000,2000,3000
+Town 2,General Surgery,Cholecystectomy,24684,33396,29040,3,1000,2000,3000
+Town 2,Neurology,Brain/Spine Surgery,55760,75440,65600,10,1000,2000,3000
+Town 2,Neurology,Laminectomy,36040,48760,42400,4,1000,2000,3000
+Town 2,Neurology,EEG,680,800,800,0,1000,2000,3000
+Town 2,Oncology,Chemotherapy,1564,1840,1840,0,1000,2000,3000
+Town 2,Oncology,Cancer Surgery,23800,32200,28000,10,1000,2000,3000
+Town 2,Oncology,Radiotherapy,34000,46000,40000,0,1000,2000,3000
+Town 2,Gynecology,Normal Delivery,23800,28000,28000,3,1000,2000,3000
+Town 2,Gynecology,C-Section,36040,42400,42400,4,1000,2000,3000
+Town 2,Gynecology,Hysterectomy,29240,34400,34400,4,1000,2000,3000
+Town 2,Urology,PCNL,36040,48760,42400,3,1000,2000,3000
+Town 2,Urology,TURP,42840,57960,50400,3,1000,2000,3000
+Town 2,Urology,Lithotripsy,29240,39560,34400,0,1000,2000,3000

@@ -1,0 +1,25 @@
+{
+  "name": "sehatsure",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SehatSure - Health insurance decision support and hospital cost engine",
+  "workspaces": [
+    "server",
+    "frontend"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm --prefix server install && npm --prefix frontend install",
+    "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix frontend run dev\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix frontend run dev",
+    "build": "npm --prefix server run build && npm --prefix frontend run build",
+    "build:render": "npm install && npm --prefix server install && npm --prefix frontend install && npm run build",
+    "start": "node --max-old-space-size=450 server/dist/index.js",
+    "gen:policies": "npm --prefix server run gen:policies",
+    "seed": "npm --prefix server run seed",
+    "test": "npm --prefix server run test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4"
+  }
+}

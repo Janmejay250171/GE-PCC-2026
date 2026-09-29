@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production builds
+dist/
+*/dist/
+build/
+*/build/
+
+# Environment and sensitive keys
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+server/.env
+frontend/.env
+!.env.example
+
+# Uploaded documents & dynamic files
+uploads/
+*/uploads/
+mock-policies/*.pdf.tmp
+
+# Large backups and archives
+*.bak
+*.backup
+*.zip
+*.tar.gz
+hospitals.csv.bak
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Scratch and test caches
+scratch/
+.vitest/
+
+*.timestamp-*
+
+__pycache__/
+*.pyc
