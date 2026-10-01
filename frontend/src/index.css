@@ -1,12 +1,41 @@
 :root {
-  --color-bg: #EBEBEB;
-  --color-surface: #f7f7f5;
-  --color-white: #ffffff;
-  --color-text: #1d1d1b;
-  --color-text-secondary: #666563;
-  --color-text-muted: #969592;
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-border-strong: rgba(0, 0, 0, 0.14);
+  /* SehatSure Master Palette */
+  --color-primary: #0F766E;
+  --color-primary-hover: #115E59;
+  --color-secondary-teal: #0D9488;
+  --color-teal-light: #F0FDFA;
+  --color-teal-border: #CCFBF1;
+  --color-mint-light: #ECFDF5;
+  --color-mint-border: #A7F3D0;
+
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-white: #FFFFFF;
+  --color-text: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+  --color-border-strong: #CBD5E1;
+
+  /* Semantic Status Tokens */
+  --color-success: #16A34A;
+  --color-success-bg: #ECFDF5;
+  --color-success-border: #BBF7D0;
+  --color-success-text: #166534;
+
+  --color-warning: #D97706;
+  --color-warning-bg: #FFFBEB;
+  --color-warning-border: #FDE68A;
+  --color-warning-text: #92400E;
+
+  --color-danger: #DC2626;
+  --color-danger-bg: #FEF2F2;
+  --color-danger-border: #FECACA;
+  --color-danger-text: #991B1B;
+
+  --color-neutral: #64748B;
+  --color-neutral-bg: #F1F5F9;
+  --color-neutral-border: #E2E8F0;
 
   --radius-sm: 12px;
   --radius-md: 20px;
@@ -14,8 +43,8 @@
   --radius-xl: 48px;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.04);
-  --shadow-lift: 0 20px 60px rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 4px 20px rgba(15, 23, 42, 0.04);
+  --shadow-lift: 0 12px 32px rgba(15, 23, 42, 0.08);
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -98,7 +127,7 @@ main {
   align-items: center;
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  background: var(--color-surface);
+  background: var(--color-bg);
   border: 1px solid var(--color-border);
   font-size: 12px;
   font-weight: 600;
@@ -122,23 +151,25 @@ main {
 }
 
 .pill-btn-primary {
-  background: var(--color-text);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
 .pill-btn-primary:hover {
+  background: var(--color-primary-hover);
   transform: translateY(-1px);
   box-shadow: var(--shadow-lift);
 }
 
 .pill-btn-ghost {
-  background: transparent;
-  color: var(--color-text);
-  border-color: var(--color-border-strong);
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-border);
 }
 
 .pill-btn-ghost:hover {
-  background: var(--color-white);
+  background: var(--color-teal-light);
+  border-color: var(--color-primary);
   transform: translateY(-1px);
 }
 
@@ -182,11 +213,11 @@ main {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(247, 247, 245, 0.94);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .navbar-inner {
@@ -218,7 +249,7 @@ main {
   width: 38px;
   height: 38px;
   border-radius: var(--radius-sm);
-  background: var(--color-text);
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,6 +293,7 @@ main {
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.03em;
+  color: var(--color-text);
 }
 
 .brand-sub {
@@ -283,7 +315,7 @@ main {
 }
 
 .nav-link:hover {
-  color: var(--color-text);
+  color: var(--color-primary);
 }
 
 .nav-cta {
@@ -315,8 +347,8 @@ main {
     width: 38px;
     height: 38px;
     border-radius: var(--radius-sm);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border-strong);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -326,15 +358,16 @@ main {
   }
 
   .mobile-menu-btn:hover {
-    background: var(--color-white);
-    border-color: var(--color-text);
+    background: var(--color-teal-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 
   .mobile-avatar-btn {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: #0f172a;
+    background: var(--color-primary);
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -359,11 +392,11 @@ main {
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
     opacity: 0;
-    background: rgba(247, 247, 245, 0.98);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--color-border);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
   }
 
   .mobile-nav-drawer.open {
@@ -399,14 +432,14 @@ main {
 
   .mobile-nav-item:hover,
   .mobile-nav-item.active {
-    background: var(--color-white);
-    color: var(--color-text);
+    background: var(--color-teal-light);
+    color: var(--color-primary);
     font-weight: 700;
     box-shadow: var(--shadow-soft);
   }
 
   .mobile-nav-item.active {
-    border-left: 3px solid var(--color-text);
+    border-left: 3px solid var(--color-primary);
   }
 
   .mobile-nav-divider {
@@ -908,17 +941,22 @@ main {
   width: 100%;
   padding: 14px 18px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-strong);
-  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
   font-size: 15px;
   color: var(--color-text);
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field-input::placeholder {
+  color: var(--color-text-muted);
 }
 
 .field-input:focus {
   outline: none;
-  border-color: var(--color-text);
+  border-color: var(--color-primary);
   background: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
 }
 
 .field-input-wrap {
@@ -999,7 +1037,7 @@ main {
 .checkbox-input {
   width: 16px;
   height: 16px;
-  accent-color: var(--color-text);
+  accent-color: var(--color-primary);
 }
 
 .login-help {
@@ -1166,7 +1204,7 @@ main {
 
 .role-tab-active {
   background: var(--color-white);
-  color: var(--color-text);
+  color: var(--color-primary);
   box-shadow: var(--shadow-soft);
 }
 
@@ -1181,15 +1219,15 @@ main {
 }
 
 .form-alert-error {
-  background: #fdf2f2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  border: 1px solid var(--color-danger-border);
 }
 
 .form-alert-success {
-  background: #f0fdf4;
-  color: #166534;
-  border: 1px solid #bbf7d0;
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+  border: 1px solid var(--color-success-border);
 }
 
 .modal-backdrop {
@@ -1264,7 +1302,7 @@ main {
 }
 
 .modal-close-btn:hover {
-  background: var(--color-text);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
@@ -1412,7 +1450,7 @@ main {
 }
 
 .detail-label {
-  color: #2b2b29;
+  color: var(--color-text-secondary);
   font-weight: 600;
   font-size: 14px;
 }
@@ -1457,8 +1495,9 @@ main {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  border-bottom: 1px solid var(--color-border-strong);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .custom-table td {
@@ -1469,29 +1508,31 @@ main {
 }
 
 .custom-table tr:hover td {
-  background: var(--color-surface);
+  background: var(--color-teal-light);
 }
 
 /* ---------- SehatSure Platform Styles (Frontend Design System) ---------- */
 
 .nav-link-btn {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   font-size: 14px;
   font-weight: 500;
   color: var(--color-text-secondary);
-  transition: color 0.15s ease;
-  padding: 6px 12px;
+  transition: all 0.15s ease;
+  padding: 6px 14px;
   border-radius: var(--radius-pill);
 }
 
 .nav-link-btn:hover {
-  color: var(--color-text);
+  color: var(--color-primary);
+  background: var(--color-teal-light);
 }
 
 .nav-link-btn.active {
-  color: var(--color-text);
-  background: var(--color-white);
+  color: var(--color-primary);
+  background: var(--color-teal-light);
+  border-color: var(--color-teal-border);
   box-shadow: var(--shadow-soft);
   font-weight: 600;
 }
@@ -1508,13 +1549,14 @@ main {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
   box-shadow: var(--shadow-soft);
 }
 
 .modern-upload-card:hover,
 .modern-upload-card.dragging {
-  border-color: var(--color-text);
+  border-color: var(--color-primary);
+  background: var(--color-teal-light);
   box-shadow: var(--shadow-lift);
   transform: translateY(-2px);
 }
@@ -1523,13 +1565,13 @@ main {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-teal-light);
+  border: 1px solid var(--color-teal-border);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
-  color: var(--color-text);
+  color: var(--color-primary);
 }
 
 .upload-card-title {
@@ -1566,7 +1608,7 @@ main {
 .demo-divider-line {
   flex: 1;
   height: 1px;
-  background: var(--color-border-strong);
+  background: var(--color-border);
 }
 
 .demo-card-interactive {
@@ -1577,7 +1619,7 @@ main {
 .demo-card-interactive:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lift);
-  border-color: var(--color-border-strong);
+  border-color: var(--color-secondary-teal);
 }
 
 .demo-card-action {
@@ -1594,17 +1636,19 @@ main {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-teal-light);
+  border: 1px solid var(--color-teal-border);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
 }
 
 .demo-card-interactive:hover .demo-arrow-circle {
-  background: var(--color-text);
+  background: var(--color-primary);
   color: var(--color-white);
+  border-color: var(--color-primary);
   transform: translateX(2px);
 }
 
@@ -1622,7 +1666,7 @@ main {
   gap: 12px;
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  background: var(--color-surface);
+  background: var(--color-bg);
   border: 1px solid var(--color-border);
   font-size: 13px;
   color: var(--color-text-muted);
@@ -1631,14 +1675,14 @@ main {
 
 .stepped-item.stepped-active {
   background: var(--color-white);
-  border-color: var(--color-text);
-  color: var(--color-text);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
   font-weight: 600;
   box-shadow: var(--shadow-soft);
 }
 
 .stepped-item.stepped-done {
-  color: var(--color-text);
+  color: var(--color-success);
   font-weight: 500;
 }
 
@@ -1730,19 +1774,19 @@ main {
 }
 
 .hospital-map-link:hover {
-  color: #1d4ed8;
-  background: rgba(37, 99, 235, 0.06);
+  color: var(--color-primary);
+  background: var(--color-teal-light);
 }
 
 .hospital-map-link:hover .hospital-map-pin-btn {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--color-primary);
+  color: var(--color-white);
   transform: scale(1.08);
 }
 
 .hospital-map-link:hover .hospital-address-text {
   text-decoration: underline;
-  text-decoration-color: rgba(37, 99, 235, 0.4);
+  text-decoration-color: var(--color-secondary-teal);
 }
 
 .hospital-map-pin-btn {
@@ -1751,9 +1795,9 @@ main {
   justify-content: center;
   width: 22px;
   height: 22px;
-  background: #eff6ff;
-  color: #2563eb;
-  border: 1px solid #bfdbfe;
+  background: var(--color-teal-light);
+  color: var(--color-primary);
+  border: 1px solid var(--color-teal-border);
   border-radius: 5px;
   flex-shrink: 0;
   margin-top: 1px;
@@ -1766,9 +1810,9 @@ main {
   gap: 5px;
   font-size: 11px;
   font-weight: 700;
-  color: #1e40af;
-  background: #f0f7ff;
-  border: 1px solid #c7d2fe;
+  color: var(--color-primary);
+  background: var(--color-teal-light);
+  border: 1px solid var(--color-teal-border);
   padding: 3px 8px;
   border-radius: var(--radius-pill);
   text-decoration: none;
@@ -1777,10 +1821,10 @@ main {
 }
 
 .hospital-map-action-pill:hover {
-  background: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
-  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.25);
 }
 
 .pill-label-interactive {
@@ -1788,11 +1832,11 @@ main {
 }
 
 .pill-label-interactive:hover {
-  background: #dbeafe !important;
-  border-color: #93c5fd !important;
-  color: #1d4ed8 !important;
+  background: var(--color-teal-light) !important;
+  border-color: var(--color-teal-border) !important;
+  color: var(--color-primary) !important;
   transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(30, 64, 175, 0.12);
+  box-shadow: 0 2px 5px rgba(15, 118, 110, 0.12);
 }
 
 .pill-label-interactive:active {

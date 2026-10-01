@@ -1083,9 +1083,9 @@ export default function HospitalDiscoveryPage({
                           fontSize: '11.5px',
                           padding: '3.5px 11px',
                           fontWeight: 800,
-                          background: '#eff6ff',
-                          color: '#1e40af',
-                          border: '1.5px solid #93c5fd',
+                          background: 'var(--color-teal-light, #F0FDFA)',
+                          color: 'var(--color-primary, #0F766E)',
+                          border: '1.5px solid var(--color-teal-border, #CCFBF1)',
                           borderRadius: 'var(--radius-pill)',
                           cursor: 'pointer',
                           display: 'inline-flex',
@@ -1093,7 +1093,7 @@ export default function HospitalDiscoveryPage({
                           gap: '5px',
                           whiteSpace: 'nowrap',
                           transition: 'all 0.15s ease',
-                          boxShadow: '0 1px 3px rgba(37,99,235,0.08)'
+                          boxShadow: '0 1px 3px rgba(15,118,110,0.08)'
                         }}
                         title={t('discovery.hospitalCard.fitScoreExplanation')}
                       >
@@ -1118,8 +1118,8 @@ export default function HospitalDiscoveryPage({
                         toggleSaveHospital(h, est, score);
                       }}
                       style={{
-                        background: isSaved ? '#eff6ff' : '#ffffff',
-                        border: isSaved ? '1.5px solid #93c5fd' : '1.5px solid #cbd5e1',
+                        background: isSaved ? 'var(--color-teal-light, #F0FDFA)' : '#ffffff',
+                        border: isSaved ? '1.5px solid var(--color-secondary-teal, #0D9488)' : '1.5px solid var(--color-border, #CBD5E1)',
                         borderRadius: 'var(--radius-pill)',
                         padding: '4px 12px',
                         cursor: 'pointer',
@@ -1128,14 +1128,14 @@ export default function HospitalDiscoveryPage({
                         gap: '5px',
                         fontSize: '12px',
                         fontWeight: 700,
-                        color: isSaved ? '#1e40af' : '#0f172a',
+                        color: isSaved ? 'var(--color-primary, #0F766E)' : 'var(--color-text, #0f172a)',
                         whiteSpace: 'nowrap',
                         transition: 'all 0.15s ease',
                         boxShadow: '0 1px 3px rgba(0,0,0,0.06)'
                       }}
                       title={isSaved ? 'Hospital bookmarked in profile. Click to remove.' : 'Save this hospital to your profile'}
                     >
-                      <Bookmark size={14} fill={isSaved ? '#1e40af' : 'none'} color={isSaved ? '#1e40af' : 'currentColor'} />
+                      <Bookmark size={14} fill={isSaved ? 'var(--color-primary, #0F766E)' : 'none'} color={isSaved ? 'var(--color-primary, #0F766E)' : 'currentColor'} />
                       <span>{isSaved ? 'Saved' : 'Save'}</span>
                     </button>
                   </div>

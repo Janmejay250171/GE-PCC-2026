@@ -217,8 +217,8 @@ export default function ProfileModal({
             <Shield size={17} />
             <span>My Policies</span>
             <span style={{
-              background: activeTab === 'policies' ? '#eff6ff' : '#e2e8f0',
-              color: activeTab === 'policies' ? '#1d4ed8' : '#64748b',
+              background: activeTab === 'policies' ? 'var(--color-teal-light, #F0FDFA)' : 'var(--color-border, #E2E8F0)',
+              color: activeTab === 'policies' ? 'var(--color-primary, #0F766E)' : 'var(--color-text-muted, #64748B)',
               padding: '2px 8px',
               borderRadius: '10px',
               fontSize: '12px',
@@ -251,8 +251,8 @@ export default function ProfileModal({
             <Bookmark size={17} />
             <span>Saved Hospitals</span>
             <span style={{
-              background: activeTab === 'hospitals' ? '#eff6ff' : '#e2e8f0',
-              color: activeTab === 'hospitals' ? '#1d4ed8' : '#64748b',
+              background: activeTab === 'hospitals' ? 'var(--color-teal-light, #F0FDFA)' : 'var(--color-border, #E2E8F0)',
+              color: activeTab === 'hospitals' ? 'var(--color-primary, #0F766E)' : 'var(--color-text-muted, #64748B)',
               padding: '2px 8px',
               borderRadius: '10px',
               fontSize: '12px',
@@ -321,7 +321,7 @@ export default function ProfileModal({
                       >
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
-                            <span className="pill-label" style={{ fontSize: '11px', padding: '3px 10px', fontWeight: 700, background: '#eff6ff', color: '#1d4ed8' }}>
+                            <span className="pill-label" style={{ fontSize: '11px', padding: '3px 10px', fontWeight: 700, background: 'var(--color-teal-light, #F0FDFA)', color: 'var(--color-primary, #0F766E)', border: '1px solid var(--color-teal-border, #CCFBF1)' }}>
                               {p.insurer || 'Private Insurer'}
                             </span>
                             {p.policyType && (
@@ -330,7 +330,7 @@ export default function ProfileModal({
                               </span>
                             )}
                             {isCurrent && (
-                              <span className="pill-label" style={{ fontSize: '11px', padding: '3px 10px', background: '#dcfce7', color: '#166534', fontWeight: 800 }}>
+                              <span className="pill-label" style={{ fontSize: '11px', padding: '3px 10px', background: 'var(--color-mint-light, #ECFDF5)', color: 'var(--color-success, #16A34A)', border: '1px solid var(--color-mint-border, #A7F3D0)', fontWeight: 800 }}>
                                 Active Selection
                               </span>
                             )}
@@ -472,7 +472,7 @@ export default function ProfileModal({
                               {hosp.segment || 'Standard'}
                             </span>
                             {hosp.fitScore > 0 && (
-                              <span className="pill-label" style={{ fontSize: '11px', padding: '2px 8px', fontWeight: 800, background: '#eff6ff', color: '#1e40af', border: '1px solid #bfdbfe' }}>
+                              <span className="pill-label" style={{ fontSize: '11px', padding: '2px 8px', fontWeight: 800, background: 'var(--color-teal-light, #F0FDFA)', color: 'var(--color-primary, #0F766E)', border: '1px solid var(--color-teal-border, #CCFBF1)' }}>
                                 Fit: {Number(hosp.fitScore).toFixed(1)}/100
                               </span>
                             )}

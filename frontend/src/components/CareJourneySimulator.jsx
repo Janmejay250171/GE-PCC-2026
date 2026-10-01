@@ -75,8 +75,8 @@ export default function CareJourneySimulator({
               width: '32px',
               height: '32px',
               borderRadius: '8px',
-              background: '#f3e8ff',
-              color: '#7e22ce',
+              background: 'var(--color-teal-light, #F0FDFA)',
+              color: 'var(--color-primary, #0F766E)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -96,9 +96,9 @@ export default function CareJourneySimulator({
                   fontWeight: 800,
                   padding: '2px 8px',
                   borderRadius: 'var(--radius-pill)',
-                  background: '#f3e8ff',
-                  color: '#7e22ce',
-                  border: '1px solid #e9d5ff'
+                  background: 'var(--color-teal-light, #F0FDFA)',
+                  color: 'var(--color-primary, #0F766E)',
+                  border: '1px solid var(--color-teal-border, #CCFBF1)'
                 }}
               >
                 {t('simulator.badge', 'SIMULATED DEMO FEED • PCC 2026')}
@@ -170,7 +170,7 @@ export default function CareJourneySimulator({
             onClick={() => onTriggerEvent(JOURNEY_EVENT_TYPES.PREAUTH_REQUESTED, { initialEstimate: 60000 })}
             style={{ fontSize: '12px', background: 'var(--color-white)' }}
           >
-            <Send size={13} style={{ marginRight: '5px', color: '#2563eb' }} />
+            <Send size={13} style={{ marginRight: '5px', color: '#0F766E' }} />
             {t('simulator.buttons.submitPreauth', '2. Submit Pre-Auth')}
           </button>
 
@@ -190,7 +190,7 @@ export default function CareJourneySimulator({
             onClick={() => onTriggerEvent(JOURNEY_EVENT_TYPES.ROOM_ASSIGNED, { newRoom: 'Twin Sharing', newRate: 4000 })}
             style={{ fontSize: '12px', background: 'var(--color-white)' }}
           >
-            <Bed size={13} style={{ marginRight: '5px', color: '#0891b2' }} />
+            <Bed size={13} style={{ marginRight: '5px', color: '#0D9488' }} />
             {t('simulator.buttons.assignRoom', '4. Assign Standard Room')}
           </button>
 
@@ -211,7 +211,7 @@ export default function CareJourneySimulator({
             onClick={() => onTriggerEvent(JOURNEY_EVENT_TYPES.INVESTIGATION_COMPLETED, { tests: ['CBC', 'X-Ray', 'USG'] })}
             style={{ fontSize: '12px', background: 'var(--color-white)' }}
           >
-            <Activity size={13} style={{ marginRight: '5px', color: '#6366f1' }} />
+            <Activity size={13} style={{ marginRight: '5px', color: '#0F766E' }} />
             {t('simulator.buttons.completeDiagnostics', '6. Complete Diagnostics')}
           </button>
 
@@ -221,7 +221,7 @@ export default function CareJourneySimulator({
             onClick={() => onTriggerEvent(JOURNEY_EVENT_TYPES.PROCEDURE_PLANNED, { procedureName: 'Surgical Treatment' })}
             style={{ fontSize: '12px', background: 'var(--color-white)' }}
           >
-            <Stethoscope size={13} style={{ marginRight: '5px', color: '#8b5cf6' }} />
+            <Stethoscope size={13} style={{ marginRight: '5px', color: '#0D9488' }} />
             {t('simulator.buttons.planProcedure', '7. Plan Procedure')}
           </button>
 
@@ -261,7 +261,7 @@ export default function CareJourneySimulator({
             onClick={() => onTriggerEvent(JOURNEY_EVENT_TYPES.DISCHARGE_INITIATED, {})}
             style={{ fontSize: '12px', background: 'var(--color-white)' }}
           >
-            <Building size={13} style={{ marginRight: '5px', color: '#2563eb' }} />
+            <Building size={13} style={{ marginRight: '5px', color: '#0F766E' }} />
             {t('simulator.buttons.initiateDischarge', '11. Initiate Discharge')}
           </button>
 
@@ -271,7 +271,7 @@ export default function CareJourneySimulator({
             onClick={() => onTriggerEvent(JOURNEY_EVENT_TYPES.CLAIM_SUBMITTED, { docket: 'CLM-DEMO-99' })}
             style={{ fontSize: '12px', background: 'var(--color-white)' }}
           >
-            <Send size={13} style={{ marginRight: '5px', color: '#0284c7' }} />
+            <Send size={13} style={{ marginRight: '5px', color: '#0D9488' }} />
             {t('simulator.buttons.submitClaim', '12. Submit Claim')}
           </button>
 

@@ -81,7 +81,7 @@ export default function ScoreBreakdownModal({
         <div className="modal-head">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-              <ShieldCheck size={22} style={{ color: 'var(--color-primary, #2563eb)' }} />
+              <ShieldCheck size={22} style={{ color: 'var(--color-primary)' }} />
               <h2 className="modal-title" style={{ fontSize: '20px' }}>
                 SehatSure Score Breakdown
               </h2>
@@ -119,7 +119,7 @@ export default function ScoreBreakdownModal({
         {/* Big Score Summary Hero */}
         <div
           style={{
-            background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
+            background: 'var(--color-bg)',
             border: '1px solid var(--color-border)',
             borderRadius: 'var(--radius-md)',
             padding: '20px',
@@ -189,13 +189,13 @@ export default function ScoreBreakdownModal({
             <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '14px 16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#2563eb' }} />
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-primary)' }} />
                   <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-text)' }}>
                     Coverage & Network Fit (50% Weight)
                   </span>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <span style={{ fontSize: '14px', fontWeight: 800, color: '#1e40af' }}>
+                  <span style={{ fontSize: '14px', fontWeight: 800, color: 'var(--color-primary)' }}>
                     +{coveragePoints}
                   </span>
                   <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)', fontWeight: 600 }}>
@@ -203,8 +203,8 @@ export default function ScoreBreakdownModal({
                   </span>
                 </div>
               </div>
-              <div style={{ width: '100%', height: '6px', background: '#e2e8f0', borderRadius: '4px', overflow: 'hidden', marginBottom: '8px' }}>
-                <div style={{ width: `${coverageFit}%`, height: '100%', background: '#2563eb', borderRadius: '4px' }} />
+              <div style={{ width: '100%', height: '6px', background: 'var(--color-border)', borderRadius: '4px', overflow: 'hidden', marginBottom: '8px' }}>
+                <div style={{ width: `${coverageFit}%`, height: '100%', background: 'var(--color-primary)', borderRadius: '4px' }} />
               </div>
               <p style={{ margin: 0, fontSize: '12px', color: 'var(--color-text-secondary)', lineHeight: 1.45 }}>
                 {isVerifiedNetwork
@@ -217,13 +217,13 @@ export default function ScoreBreakdownModal({
             <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '14px 16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-success)' }} />
                   <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-text)' }}>
                     Patient Out-of-Pocket Fit (25% Weight)
                   </span>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <span style={{ fontSize: '14px', fontWeight: 800, color: '#047857' }}>
+                  <span style={{ fontSize: '14px', fontWeight: 800, color: 'var(--color-success)' }}>
                     +{patientCostPoints}
                   </span>
                   <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)', fontWeight: 600 }}>
@@ -231,8 +231,8 @@ export default function ScoreBreakdownModal({
                   </span>
                 </div>
               </div>
-              <div style={{ width: '100%', height: '6px', background: '#e2e8f0', borderRadius: '4px', overflow: 'hidden', marginBottom: '8px' }}>
-                <div style={{ width: `${patientCostFit}%`, height: '100%', background: '#10b981', borderRadius: '4px' }} />
+              <div style={{ width: '100%', height: '6px', background: 'var(--color-border)', borderRadius: '4px', overflow: 'hidden', marginBottom: '8px' }}>
+                <div style={{ width: `${patientCostFit}%`, height: '100%', background: 'var(--color-success)', borderRadius: '4px' }} />
               </div>
               <p style={{ margin: 0, fontSize: '12px', color: 'var(--color-text-secondary)', lineHeight: 1.45 }}>
                 Measures out-of-pocket exposure. Estimated patient payable is{' '}
@@ -245,13 +245,13 @@ export default function ScoreBreakdownModal({
             <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '14px 16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#8b5cf6' }} />
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-secondary-teal)' }} />
                   <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-text)' }}>
                     Hospital Tier & Infrastructure (15% Weight)
                   </span>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <span style={{ fontSize: '14px', fontWeight: 800, color: '#6d28d9' }}>
+                  <span style={{ fontSize: '14px', fontWeight: 800, color: 'var(--color-secondary-teal)' }}>
                     +{hospitalTypePoints}
                   </span>
                   <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)', fontWeight: 600 }}>
@@ -259,8 +259,8 @@ export default function ScoreBreakdownModal({
                   </span>
                 </div>
               </div>
-              <div style={{ width: '100%', height: '6px', background: '#e2e8f0', borderRadius: '4px', overflow: 'hidden', marginBottom: '8px' }}>
-                <div style={{ width: `${hospitalTypeScore}%`, height: '100%', background: '#8b5cf6', borderRadius: '4px' }} />
+              <div style={{ width: '100%', height: '6px', background: 'var(--color-border)', borderRadius: '4px', overflow: 'hidden', marginBottom: '8px' }}>
+                <div style={{ width: `${hospitalTypeScore}%`, height: '100%', background: 'var(--color-secondary-teal)', borderRadius: '4px' }} />
               </div>
               <p style={{ margin: 0, fontSize: '12px', color: 'var(--color-text-secondary)', lineHeight: 1.45 }}>
                 Accreditation & tier rating ({hospital?.tier || 'Tier 2'}, {hospital?.hospital_type || 'Private'}),

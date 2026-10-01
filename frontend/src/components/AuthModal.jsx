@@ -154,13 +154,13 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', prom
               width: '44px',
               height: '44px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
+              background: 'var(--color-primary)',
               color: '#ffffff',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 12px',
-              boxShadow: '0 8px 16px rgba(37, 99, 235, 0.25)'
+              boxShadow: 'var(--shadow-soft)'
             }}
           >
             <UserIcon size={24} />
@@ -179,7 +179,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', prom
         <div
           style={{
             display: 'flex',
-            background: '#f1f5f9',
+            background: 'var(--color-neutral-bg, #f1f5f9)',
             padding: '4px',
             borderRadius: '10px',
             marginBottom: '20px'
@@ -229,9 +229,9 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', prom
         {promptMessage && !error && !successMsg && (
           <div
             style={{
-              background: '#eff6ff',
-              border: '1px solid #bfdbfe',
-              color: '#1d4ed8',
+              background: 'var(--color-teal-light, #F0FDFA)',
+              border: '1px solid var(--color-teal-border, #CCFBF1)',
+              color: 'var(--color-primary, #0F766E)',
               padding: '11px 14px',
               borderRadius: '8px',
               fontSize: '13px',
@@ -242,7 +242,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', prom
               marginBottom: '16px'
             }}
           >
-            <AlertCircle size={16} style={{ flexShrink: 0, color: '#2563eb' }} />
+            <AlertCircle size={16} style={{ flexShrink: 0, color: 'var(--color-primary, #0F766E)' }} />
             <span>{promptMessage}</span>
           </div>
         )}

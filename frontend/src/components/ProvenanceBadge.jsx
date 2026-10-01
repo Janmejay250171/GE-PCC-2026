@@ -3,51 +3,51 @@ import { useTranslation } from 'react-i18next';
 
 const BADGE_CONFIG = {
   'POLICY-DERIVED': {
-    bg: '#dcfce7',
-    color: '#15803d',
-    border: '#bbf7d0',
+    bg: '#ecfdf5',
+    color: '#16a34a',
+    border: '#a7f3d0',
     labelKey: 'provenance.policyDerived',
     tooltipKey: 'provenance.tooltips.policyDerived'
   },
   'DATASET-DERIVED': {
-    bg: '#dbeafe',
-    color: '#1d4ed8',
-    border: '#bfdbfe',
+    bg: '#f0fdfa',
+    color: '#0f766e',
+    border: '#ccfbf1',
     labelKey: 'provenance.datasetDerived',
     tooltipKey: 'provenance.tooltips.datasetDerived'
   },
   'MODELLED ESTIMATE': {
     bg: '#fef3c7',
-    color: '#b45309',
+    color: '#d97706',
     border: '#fde68a',
     labelKey: 'provenance.modelledEstimate',
     tooltipKey: 'provenance.tooltips.modelledEstimate'
   },
   'SYSTEM ASSUMPTION': {
-    bg: '#ffedd5',
-    color: '#c2410c',
-    border: '#fed7aa',
+    bg: '#fffbeb',
+    color: '#b45309',
+    border: '#fde68a',
     labelKey: 'provenance.systemAssumption',
     tooltipKey: 'provenance.tooltips.systemAssumption'
   },
   'SIMULATED DEMO EVENT': {
-    bg: '#f3e8ff',
-    color: '#7e22ce',
-    border: '#e9d5ff',
+    bg: '#f1f5f9',
+    color: '#475569',
+    border: '#e2e8f0',
     labelKey: 'provenance.simulatedDemo',
     tooltipKey: 'provenance.tooltips.simulatedDemo'
   },
   'USER-CONFIRMED': {
     bg: '#ecfdf5',
-    color: '#047857',
+    color: '#16a34a',
     border: '#a7f3d0',
     labelKey: 'provenance.userConfirmed',
     tooltipKey: 'provenance.tooltips.userConfirmed'
   },
   'UNKNOWN': {
-    bg: '#f3f4f6',
-    color: '#4b5563',
-    border: '#e5e7eb',
+    bg: '#f1f5f9',
+    color: '#64748b',
+    border: '#e2e8f0',
     labelKey: 'provenance.unknown',
     tooltipKey: 'provenance.tooltips.unknown'
   }

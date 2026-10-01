@@ -256,7 +256,7 @@ export default function CoverageSummaryPage({
               <span className="detail-label">
                 {t('summary.fields.sumInsured')}
                 {policy.confidence?.sumInsured && (
-                  <span style={{ display: 'block', fontSize: '10px', color: policy.confidence.sumInsured === 'assumed' ? '#6d28d9' : '#166534', marginTop: '2px' }}>
+                  <span style={{ display: 'block', fontSize: '10px', color: policy.confidence.sumInsured === 'assumed' ? 'var(--color-text-muted)' : '#166534', marginTop: '2px' }}>
                     {policy.confidence.sumInsured === 'assumed' ? 'Scheme Standard' : 'Document-Stated'}
                   </span>
                 )}
@@ -274,7 +274,7 @@ export default function CoverageSummaryPage({
               <span className="detail-label">
                 {t('summary.fields.roomRentLimit')}
                 {policy.confidence?.roomLimit && (
-                  <span style={{ display: 'block', fontSize: '10px', color: policy.confidence.roomLimit === 'assumed' ? '#6d28d9' : '#166534', marginTop: '2px' }}>
+                  <span style={{ display: 'block', fontSize: '10px', color: policy.confidence.roomLimit === 'assumed' ? 'var(--color-text-muted)' : '#166534', marginTop: '2px' }}>
                     {policy.confidence.roomLimit === 'assumed' ? 'Scheme Standard' : 'Document-Stated'}
                   </span>
                 )}
@@ -295,7 +295,7 @@ export default function CoverageSummaryPage({
               <span className="detail-label">
                 {t('summary.fields.icuLimit')}
                 {policy.confidence?.icuLimit && (
-                  <span style={{ display: 'block', fontSize: '10px', color: policy.confidence.icuLimit === 'assumed' ? '#6d28d9' : '#166534', marginTop: '2px' }}>
+                  <span style={{ display: 'block', fontSize: '10px', color: policy.confidence.icuLimit === 'assumed' ? 'var(--color-text-muted)' : '#166534', marginTop: '2px' }}>
                     {policy.confidence.icuLimit === 'assumed' ? 'Standard Policy Cover' : 'Document-Stated'}
                   </span>
                 )}
@@ -495,7 +495,7 @@ export default function CoverageSummaryPage({
             <div className="detail-row">
               <span className="detail-label">
                 Cashless Settlement
-                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.cashlessAvailable === 'assumed' ? '#6d28d9' : policy.cashlessAvailable !== null && policy.cashlessAvailable !== undefined ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
+                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.cashlessAvailable === 'assumed' ? 'var(--color-text-muted)' : policy.cashlessAvailable !== null && policy.cashlessAvailable !== undefined ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
                   {policy.confidence?.cashlessAvailable === 'assumed'
                     ? 'Assumed'
                     : policy.cashlessAvailable !== null && policy.cashlessAvailable !== undefined
@@ -515,7 +515,7 @@ export default function CoverageSummaryPage({
             <div className="detail-row">
               <span className="detail-label">
                 Network Facility Status
-                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.networkType === 'assumed' ? '#6d28d9' : policy.networkType ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
+                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.networkType === 'assumed' ? 'var(--color-text-muted)' : policy.networkType ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
                   {policy.confidence?.networkType === 'assumed'
                     ? 'Assumed Network'
                     : policy.networkType
@@ -585,7 +585,7 @@ export default function CoverageSummaryPage({
             <div className="detail-row">
               <span className="detail-label">
                 Restoration Benefit
-                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.restorationBenefit === 'assumed' ? '#6d28d9' : policy.restorationBenefit !== null && policy.restorationBenefit !== undefined ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
+                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.restorationBenefit === 'assumed' ? 'var(--color-text-muted)' : policy.restorationBenefit !== null && policy.restorationBenefit !== undefined ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
                   {policy.confidence?.restorationBenefit === 'assumed'
                     ? 'Assumed'
                     : policy.restorationBenefit !== null && policy.restorationBenefit !== undefined

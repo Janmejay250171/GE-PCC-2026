@@ -136,15 +136,15 @@ export default function UploadPage({ onPolicyLoaded, onRequireAuth }) {
       {!user && (
         <div
           style={{
-            background: 'linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%)',
-            border: '1.5px solid #bfdbfe',
+            background: 'var(--color-teal-light)',
+            border: '1px solid var(--color-teal-border)',
             borderRadius: '14px',
             padding: '16px 20px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '16px',
-            boxShadow: '0 4px 12px rgba(37, 99, 235, 0.06)',
+            boxShadow: 'var(--shadow-soft)',
             flexWrap: 'wrap'
           }}
         >
@@ -154,22 +154,21 @@ export default function UploadPage({ onPolicyLoaded, onRequireAuth }) {
                 width: '40px',
                 height: '40px',
                 borderRadius: '10px',
-                background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
+                background: 'var(--color-primary)',
                 color: '#ffffff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: '0 4px 10px rgba(37, 99, 235, 0.25)'
+                flexShrink: 0
               }}
             >
               <Lock size={20} />
             </div>
             <div>
-              <div style={{ fontSize: '15px', fontWeight: 800, color: '#1e3a8a' }}>
+              <div style={{ fontSize: '15px', fontWeight: 800, color: 'var(--color-text)' }}>
                 Please Log In First
               </div>
-              <div style={{ fontSize: '13px', color: '#475569', marginTop: '2px' }}>
+              <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>
                 You must be logged in to upload policy PDFs, view coverage calculations, and explore network hospitals.
               </div>
             </div>

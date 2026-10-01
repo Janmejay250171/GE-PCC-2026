@@ -135,7 +135,7 @@ export default function JourneyIntelligencePanel({
       badge: claimEvent
         ? t('intelligence.stagesList.discharge.badgeSubmitted', 'Submitted')
         : t('intelligence.stagesList.discharge.badgeChecklist', 'Checklist'),
-      color: '#1d4ed8'
+      color: 'var(--color-primary, #0F766E)'
     }
   ];
 
