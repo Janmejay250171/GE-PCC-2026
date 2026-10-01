@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 export default function Navbar({
   currentView,
   onGoHome,
+  onGoHowItWorks,
   onBackToPolicy,
   onResetPolicy,
   activePolicy,
@@ -51,6 +52,14 @@ export default function Navbar({
             {t('navbar.uploadPolicy')}
           </button>
 
+          <button
+            type="button"
+            onClick={onGoHowItWorks}
+            className={`nav-link-btn ${currentView === 'how-it-works' ? 'active' : ''}`}
+          >
+            {t('navbar.howItWorks', 'How It Works')}
+          </button>
+
           {activePolicy && (
             <button
               type="button"
@@ -80,7 +89,7 @@ export default function Navbar({
             </>
           )}
 
-          {currentView !== 'upload' ? (
+          {currentView !== 'upload' && currentView !== 'how-it-works' ? (
             <button
               type="button"
               onClick={onResetPolicy || onGoHome}
@@ -89,7 +98,20 @@ export default function Navbar({
               {t('navbar.changePolicy')}
             </button>
           ) : (
-            <a href="#demo-section" className="pill-btn pill-btn-primary nav-cta">
+            <a
+              href="#demo-section"
+              onClick={(e) => {
+                if (currentView === 'how-it-works') {
+                  e.preventDefault();
+                  onGoHome();
+                  setTimeout(() => {
+                    const el = document.getElementById('demo-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 120);
+                }
+              }}
+              className="pill-btn pill-btn-primary nav-cta"
+            >
               {t('navbar.demoPolicies')}
             </a>
           )}
@@ -193,6 +215,14 @@ export default function Navbar({
             {t('navbar.uploadPolicy')}
           </button>
 
+          <button
+            type="button"
+            onClick={() => handleNavClick(onGoHowItWorks)}
+            className={`mobile-nav-item ${currentView === 'how-it-works' ? 'active' : ''}`}
+          >
+            {t('navbar.howItWorks', 'How It Works')}
+          </button>
+
           {activePolicy && (
             <button
               type="button"
@@ -224,7 +254,7 @@ export default function Navbar({
 
           <div className="mobile-nav-divider" />
 
-          {currentView !== 'upload' ? (
+          {currentView !== 'upload' && currentView !== 'how-it-works' ? (
             <button
               type="button"
               onClick={() => handleNavClick(onResetPolicy || onGoHome)}
@@ -235,7 +265,17 @@ export default function Navbar({
           ) : (
             <a
               href="#demo-section"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                if (currentView === 'how-it-works') {
+                  e.preventDefault();
+                  onGoHome();
+                  setTimeout(() => {
+                    const el = document.getElementById('demo-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 120);
+                }
+              }}
               className="pill-btn pill-btn-primary mobile-cta-btn"
             >
               {t('navbar.demoPolicies')}

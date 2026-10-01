@@ -2075,3 +2075,158 @@ main {
     padding: 36px 16px !important;
   }
 }
+
+/* ---------- How It Works Section Styles ---------- */
+
+.hiw-source-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 992px) {
+  .hiw-source-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hiw-source-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hiw-source-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.hiw-source-card:hover {
+  border-color: var(--color-secondary-teal);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px);
+}
+
+.hiw-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.hiw-source-link:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+.hiw-method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 840px) {
+  .hiw-method-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hiw-method-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.hiw-method-highlight {
+  background: var(--color-teal-light);
+  border: 1.5px solid var(--color-teal-border);
+}
+
+.hiw-step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.hiw-step-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--color-text);
+}
+
+.hiw-step-body {
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.hiw-db-image-container {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+.hiw-db-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.hiw-db-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.hiw-db-image-container:hover .hiw-db-image-overlay {
+  opacity: 1;
+}
+
+.hiw-db-image-container:hover .hiw-db-image {
+  transform: scale(1.02);
+}
+

@@ -4,6 +4,7 @@ import UploadPage from './pages/UploadPage';
 import CoverageSummaryPage from './pages/CoverageSummaryPage';
 import HospitalDiscoveryPage from './pages/HospitalDiscoveryPage';
 import CareJourneyPage from './pages/CareJourneyPage';
+import HowItWorksPage from './pages/HowItWorksPage';
 import AuthModal from './components/AuthModal';
 import ProfileModal from './components/ProfileModal';
 import { useAuth } from './context/AuthContext';
@@ -20,6 +21,9 @@ export default function App() {
 
   // Restore session from localStorage if available
   const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/how-it-works') {
+      return 'how-it-works';
+    }
     try {
       const saved = localStorage.getItem('sehatsure_session');
       if (saved) {
@@ -76,7 +80,7 @@ export default function App() {
 
   // Protect unauthenticated access: require login before accessing summary, discovery or journey
   useEffect(() => {
-    if (!user && currentView !== 'upload') {
+    if (!user && currentView !== 'upload' && currentView !== 'how-it-works') {
       setCurrentView('upload');
       handleOpenAuth('login', 'Please log in first to access your insurance policy.');
     }
@@ -102,26 +106,42 @@ export default function App() {
     }
   }, [currentView, activePolicy, journeyHospital, journeyProcedure, journeyRoom]);
 
-  // Check URL path for direct policy navigation e.g. /policy/:id
+  // Check URL path for direct policy navigation or how-it-works
   useEffect(() => {
-    const path = window.location.pathname;
-    const match = path.match(/\/policy\/([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-      const policyId = match[1];
-      getPolicy(policyId)
-        .then((doc) => {
-          setActivePolicy(doc);
-          if (doc.confirmedByUser) {
-            setCurrentView((prev) => (prev === 'journey' ? 'journey' : 'discovery'));
-          } else {
-            setCurrentView('summary');
-          }
-        })
-        .catch((err) => {
-          console.warn('Could not fetch policy from URL:', err);
-        });
-    }
+    const handleUrlRoute = () => {
+      const path = window.location.pathname;
+      if (path === '/how-it-works') {
+        setCurrentView('how-it-works');
+        return;
+      }
+      const match = path.match(/\/policy\/([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        const policyId = match[1];
+        getPolicy(policyId)
+          .then((doc) => {
+            setActivePolicy(doc);
+            if (doc.confirmedByUser) {
+              setCurrentView((prev) => (prev === 'journey' ? 'journey' : 'discovery'));
+            } else {
+              setCurrentView('summary');
+            }
+          })
+          .catch((err) => {
+            console.warn('Could not fetch policy from URL:', err);
+          });
+      }
+    };
+
+    handleUrlRoute();
+    window.addEventListener('popstate', handleUrlRoute);
+    return () => window.removeEventListener('popstate', handleUrlRoute);
   }, []);
+
+  const handleGoHowItWorks = () => {
+    setCurrentView('how-it-works');
+    window.history.pushState({}, '', '/how-it-works');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handlePolicyLoaded = (policy) => {
     setActivePolicy(policy);
@@ -229,6 +249,7 @@ export default function App() {
         currentView={currentView}
         activePolicy={activePolicy}
         onGoHome={handleGoHome}
+        onGoHowItWorks={handleGoHowItWorks}
         onBackToPolicy={() => setCurrentView('summary')}
         onResetPolicy={handleGoHome}
         onGoToHospitals={() => setCurrentView('discovery')}
@@ -240,6 +261,10 @@ export default function App() {
       <div className="page">
         <div className="canvas">
           <main>
+            {currentView === 'how-it-works' && (
+              <HowItWorksPage onGoHome={handleGoHome} />
+            )}
+
             {currentView === 'upload' && (
               <UploadPage
                 onPolicyLoaded={handlePolicyLoaded}
