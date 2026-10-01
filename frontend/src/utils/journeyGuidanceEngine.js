@@ -53,7 +53,9 @@ export function evaluateClientJourneyEvent({
   // Room rate evaluation
   let roomRate = metadata.newRate;
   if (!roomRate) {
-    if (currentRoom.toLowerCase().includes('private') || currentRoom.toLowerCase().includes('single')) {
+    if (hospital?.estimate?.roomCostPerDay) {
+      roomRate = hospital.estimate.roomCostPerDay;
+    } else if (currentRoom.toLowerCase().includes('private') || currentRoom.toLowerCase().includes('single')) {
       roomRate = 10000;
     } else if (currentRoom.toLowerCase().includes('twin')) {
       roomRate = 5000;
@@ -67,9 +69,9 @@ export function evaluateClientJourneyEvent({
   const proportionateDeductionActive = Boolean(policy?.proportionateDeduction && hasRoomExcess);
 
   // Financial Estimates
-  const stayDays = 2;
+  const stayDays = Math.max(1, Math.round(hospital?.estimate?.estimatedStayDays || 2));
   const roomCharges = roomRate * stayDays;
-  const procedureCharges = 40000;
+  const procedureCharges = hospital?.estimate?.treatmentCost || 40000;
   const doctorFees = Math.round(procedureCharges * 0.20);
   const medicineCharges = Math.round(procedureCharges * 0.10);
   const estimatedBill = roomCharges + procedureCharges + doctorFees + medicineCharges;

@@ -961,7 +961,7 @@ export class HospitalService {
 
     const colKey = ROOM_KEYS[roomType] || ROOM_KEYS['General Ward'];
     const roomCostPerDay = rec[colKey] || 0;
-    const stayDays = rec.estimated_stay_days || 0;
+    const stayDays = Math.max(1, Math.round(rec.estimated_stay_days || 0));
     const roomCost = roomCostPerDay * stayDays;
 
     // Procedure cost directly from dataset logic (segment adjusted + deterministic variation)
@@ -990,7 +990,7 @@ export class HospitalService {
       totalCost: Math.round(totalCost),
       displayLow,
       displayHigh,
-      estimatedStayDays: rec.estimated_stay_days,
+      estimatedStayDays: stayDays,
       roomCostPerDay
     };
   }

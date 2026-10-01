@@ -519,7 +519,7 @@ function calculateRoomCost(costRecord, roomType) {
   if (!costRecord) return 0;
   const colKey = ROOM_KEYS[roomType] || ROOM_KEYS["General Ward"];
   const roomCostPerDay = costRecord[colKey] || 0;
-  const stayDays = costRecord.estimated_stay_days || 0;
+  const stayDays = Math.max(1, Math.round(costRecord.estimated_stay_days || 0));
   return roomCostPerDay * stayDays;
 }
 
@@ -574,7 +574,7 @@ function calculateHospitalEstimate(hospital, specialty, procedure, roomType) {
     totalCost: Math.round(totalCost),
     displayLow: Math.round(displayLow),
     displayHigh: Math.round(displayHigh),
-    estimatedStayDays: rec.estimated_stay_days
+    estimatedStayDays: Math.max(1, Math.round(rec.estimated_stay_days || 0))
   };
 }
 

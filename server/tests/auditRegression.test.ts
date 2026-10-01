@@ -428,4 +428,74 @@ Opposite IIM, Bengaluru, Karnataka 560076",Star Health;HDFC ERGO,4.5,Cardiology;
       expect(preHosp?.provenance).toBe('Reference guidance');
     });
   });
+
+  // =========================================================================
+  // P3: Mathematical Parity: Stay Days, Room Rent, and Accounting Identity
+  // =========================================================================
+  describe('P3 — Mathematical Parity: Stay Days, Room Rent, and Accounting Identity', () => {
+    it('guarantees stayDays is an integer and roomCost strictly equals roomCostPerDay * stayDays', () => {
+      const searchRes = hospitalService.search({
+        policy: basePolicy,
+        city: 'Chennai',
+        specialty: 'Cardiology',
+        roomType: 'General Ward'
+      });
+      expect(searchRes.hospitals.length).toBeGreaterThan(0);
+      const item = searchRes.hospitals[0];
+
+      const estimate = hospitalService.calculateHospitalEstimate(item.hospital, 'Cardiology', undefined, 'General Ward');
+      expect(estimate.available).toBe(true);
+
+      // Inpatient stay days must be discrete integer days
+      expect(Number.isInteger(estimate.estimatedStayDays)).toBe(true);
+      expect(estimate.estimatedStayDays).toBeGreaterThanOrEqual(1);
+
+      // Room cost must equal rate * stayDays exactly
+      expect(estimate.roomCost).toBe(estimate.roomCostPerDay * estimate.estimatedStayDays);
+
+      // Total cost must equal sum of its constituent items
+      const doctorFees = Math.round(estimate.treatmentCost * 0.20);
+      const medicineCharges = Math.round(estimate.treatmentCost * 0.10);
+      expect(estimate.totalCost).toBe(estimate.treatmentCost + doctorFees + medicineCharges + estimate.roomCost);
+    });
+
+    it('guarantees detailed bill breakdown has exact parity with estimate and accounting identity holds', () => {
+      const searchRes = hospitalService.search({
+        policy: basePolicy,
+        city: 'Chennai',
+        specialty: 'Cardiology',
+        roomType: 'General Ward'
+      });
+      expect(searchRes.hospitals.length).toBeGreaterThan(0);
+      const item = searchRes.hospitals[0];
+
+      const breakdown = hospitalService.getDetailedBillBreakdown(
+        item.hospital.hospital_name,
+        item.hospital.address,
+        basePolicy,
+        'Cardiology',
+        undefined,
+        'General Ward'
+      );
+
+      expect(breakdown).not.toBeNull();
+      if (!breakdown) return;
+
+      const { itemizedBill, totalPatientPayable, totalInsuranceCovered } = breakdown;
+
+      // Mathematical identity: roomCharges = roomRatePerDay * stayDays
+      expect(itemizedBill.roomCharges).toBe(itemizedBill.roomRatePerDay * itemizedBill.stayDays);
+
+      // Line item summation
+      const expectedTotal = itemizedBill.procedureCharges +
+        itemizedBill.doctorFees +
+        itemizedBill.medicineCharges +
+        itemizedBill.roomCharges +
+        itemizedBill.otherCharges;
+      expect(itemizedBill.totalBill).toBe(expectedTotal);
+
+      // Accounting identity: Patient Payable + Insurer Payable = Total Bill
+      expect(totalPatientPayable + totalInsuranceCovered).toBe(itemizedBill.totalBill);
+    });
+  });
 });
