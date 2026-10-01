@@ -55,7 +55,7 @@ export default function Navbar({
           <button
             type="button"
             onClick={onGoHowItWorks}
-            className={`nav-link-btn ${currentView === 'how-it-works' ? 'active' : ''}`}
+            className={`nav-link-btn nav-link-btn-highlight ${currentView === 'how-it-works' ? 'active' : ''}`}
           >
             {t('navbar.howItWorks', 'How It Works')}
           </button>
@@ -219,6 +219,12 @@ export default function Navbar({
             type="button"
             onClick={() => handleNavClick(onGoHowItWorks)}
             className={`mobile-nav-item ${currentView === 'how-it-works' ? 'active' : ''}`}
+            style={{
+              background: 'var(--color-teal-light)',
+              border: '1.5px solid var(--color-teal-border)',
+              color: 'var(--color-primary)',
+              fontWeight: 600
+            }}
           >
             {t('navbar.howItWorks', 'How It Works')}
           </button>

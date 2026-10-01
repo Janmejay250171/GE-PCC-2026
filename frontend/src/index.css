@@ -1532,9 +1532,32 @@ main {
 .nav-link-btn.active {
   color: var(--color-primary);
   background: var(--color-teal-light);
-  border-color: var(--color-teal-border);
+  border: 1.5px solid var(--color-teal-border);
   box-shadow: var(--shadow-soft);
   font-weight: 600;
+}
+
+.nav-link-btn-highlight {
+  background: var(--color-teal-light);
+  border: 1.5px solid var(--color-teal-border);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+}
+
+.nav-link-btn-highlight:hover {
+  background: var(--color-white);
+  border-color: var(--color-primary);
+  color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.nav-link-btn-highlight.active {
+  background: var(--color-teal-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.18);
+  font-weight: 700;
 }
 
 /* Modern Upload Card */
