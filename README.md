@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🏥 SehatSure
 
 > **AI-Powered Hospital & Insurance Policy Intelligence Platform**
@@ -417,6 +416,3 @@ Data-driven Decision Support
 
 ⭐ If you find the project useful, consider starring the repository on
 GitHub.
-=======
-# GE-PCC-2026
->>>>>>> 92263f6702ed3079e69629e80cb299c2ad13467b

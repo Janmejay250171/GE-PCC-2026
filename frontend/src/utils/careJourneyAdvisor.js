@@ -117,7 +117,6 @@ export function getCareJourneyPlan({ policy, hospital, procedure, roomType }) {
         }
       ],
       checklist: [
-        { id: 'c1_1', text: `Submit pre-auth form at ${hospitalName} TPA cashless desk (advance submission recommended for planned admissions).` },
         { id: 'c1_2', text: `Verify that chosen room (${selectedRoomName}) adheres to your policy limit (${roomLimitLabel || 'Check Policy'}).` },
         { id: 'c1_3', text: 'Carry original Government Photo ID (Aadhaar / Voter ID) and Policy Schedule PDF.' },
         { id: 'c1_4', text: 'Ensure treating doctor fills diagnosis and estimated cost on the initial pre-auth request.' }
