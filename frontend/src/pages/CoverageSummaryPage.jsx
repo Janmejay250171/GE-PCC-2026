@@ -101,8 +101,12 @@ export default function CoverageSummaryPage({
 
   const getPolicyTypeLabel = (type) => {
     switch (type) {
+      case 'individual':
+        return 'Individual Health Insurance';
+      case 'floater':
+        return 'Family Floater';
       case 'private':
-        return 'Retail Private Floater';
+        return 'Retail Private Insurance';
       case 'corporate':
         return 'Corporate Group Plan';
       case 'pmjay':
@@ -151,7 +155,7 @@ export default function CoverageSummaryPage({
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px' }}>
+          <div className="summary-header-badge-col">
             {isPolicyValid ? (
               <>
                 <span className="pill-label" style={{ background: '#f0fdf4', color: '#166534', borderColor: '#bbf7d0', padding: '10px 20px', fontSize: '13px' }}>
@@ -237,7 +241,7 @@ export default function CoverageSummaryPage({
       </section>
 
       {/* 4 Cards Grid */}
-      <div className="features-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
+      <div className="coverage-cards-grid">
         {/* CARD 1: Key Financial Limits */}
         <div className="feature-card" style={{ gap: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -302,54 +306,136 @@ export default function CoverageSummaryPage({
 
           {/* Proportionate Deduction Callout */}
           {policy.proportionateDeduction ? (
-            <div className="form-alert form-alert-error" style={{ borderRadius: 'var(--radius-sm)', marginTop: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+            <div
+              className="form-alert form-alert-error"
+              style={{
+                borderRadius: 'var(--radius-sm)',
+                marginTop: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '12px',
+                padding: '10px 14px'
+              }}
+            >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <ShieldAlert size={18} style={{ flexShrink: 0 }} />
                 <div style={{ fontSize: '12px', lineHeight: 1.4 }}>
-                  <strong>{t('summary.fields.proportionateDeduction')}: </strong>
-                  {t('summary.values.applicable')}
+                  <span style={{ color: 'var(--color-text-secondary)', marginRight: '6px' }}>
+                    {t('summary.fields.proportionateDeduction')}:
+                  </span>
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      background: '#fee2e2',
+                      color: '#991b1b',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      letterSpacing: '0.02em',
+                      textTransform: 'uppercase'
+                    }}
+                  >
+                    Current Status: {t('summary.values.applicable')}
+                  </span>
                 </div>
               </div>
-              <button
-                type="button"
-                className="pill-btn pill-btn-ghost pill-btn-sm"
-                style={{ padding: '2px 8px', fontSize: '11px', height: 'auto', background: '#fff', border: '1px solid #fca5a5', cursor: 'pointer' }}
-                onClick={async () => {
-                  try {
-                    const updated = await updatePolicy(policy._id, { proportionateDeduction: false });
-                    onPolicyConfirmed(updated);
-                  } catch (e) {
-                    console.error('Failed to toggle proportionate deduction:', e);
-                  }
-                }}
-              >
-                Set to Not Applicable
-              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 500 }}>Action:</span>
+                <button
+                  type="button"
+                  className="pill-btn pill-btn-sm"
+                  style={{
+                    padding: '4px 10px',
+                    fontSize: '11px',
+                    height: 'auto',
+                    background: '#ffffff',
+                    color: '#b91c1c',
+                    border: '1.5px solid #f87171',
+                    borderRadius: '4px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+                  }}
+                  onClick={async () => {
+                    try {
+                      const updated = await updatePolicy(policy._id, { proportionateDeduction: false });
+                      onPolicyConfirmed(updated);
+                    } catch (e) {
+                      console.error('Failed to toggle proportionate deduction:', e);
+                    }
+                  }}
+                >
+                  Set to Not Applicable
+                </button>
+              </div>
             </div>
           ) : (
-            <div className="form-alert form-alert-success" style={{ borderRadius: 'var(--radius-sm)', marginTop: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+            <div
+              className="form-alert form-alert-success"
+              style={{
+                borderRadius: 'var(--radius-sm)',
+                marginTop: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '12px',
+                padding: '10px 14px'
+              }}
+            >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <ShieldCheck size={18} style={{ flexShrink: 0 }} />
                 <div style={{ fontSize: '12px', lineHeight: 1.4 }}>
-                  <strong>{t('summary.fields.proportionateDeduction')}: </strong>
-                  {t('summary.values.notApplicable')}
+                  <span style={{ color: 'var(--color-text-secondary)', marginRight: '6px' }}>
+                    {t('summary.fields.proportionateDeduction')}:
+                  </span>
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      background: '#dcfce7',
+                      color: '#166534',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      letterSpacing: '0.02em',
+                      textTransform: 'uppercase'
+                    }}
+                  >
+                    Current Status: {t('summary.values.notApplicable')}
+                  </span>
                 </div>
               </div>
-              <button
-                type="button"
-                className="pill-btn pill-btn-ghost pill-btn-sm"
-                style={{ padding: '2px 8px', fontSize: '11px', height: 'auto', background: '#fff', border: '1px solid #bbf7d0', cursor: 'pointer' }}
-                onClick={async () => {
-                  try {
-                    const updated = await updatePolicy(policy._id, { proportionateDeduction: true });
-                    onPolicyConfirmed(updated);
-                  } catch (e) {
-                    console.error('Failed to toggle proportionate deduction:', e);
-                  }
-                }}
-              >
-                Set to Applicable
-              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 500 }}>Action:</span>
+                <button
+                  type="button"
+                  className="pill-btn pill-btn-sm"
+                  style={{
+                    padding: '4px 10px',
+                    fontSize: '11px',
+                    height: 'auto',
+                    background: '#ffffff',
+                    color: '#15803d',
+                    border: '1.5px solid #86efac',
+                    borderRadius: '4px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+                  }}
+                  onClick={async () => {
+                    try {
+                      const updated = await updatePolicy(policy._id, { proportionateDeduction: true });
+                      onPolicyConfirmed(updated);
+                    } catch (e) {
+                      console.error('Failed to toggle proportionate deduction:', e);
+                    }
+                  }}
+                >
+                  Set to Applicable
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -407,7 +493,36 @@ export default function CoverageSummaryPage({
             </div>
 
             <div className="detail-row">
-              <span className="detail-label">Cashless Settlement</span>
+              <span className="detail-label">
+                Cashless Settlement
+                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.cashlessAvailable === 'assumed' ? '#6d28d9' : policy.cashlessAvailable !== null && policy.cashlessAvailable !== undefined ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
+                  {policy.confidence?.cashlessAvailable === 'assumed'
+                    ? 'Assumed'
+                    : policy.cashlessAvailable !== null && policy.cashlessAvailable !== undefined
+                      ? 'Document-Stated'
+                      : 'Unspecified'}
+                </span>
+              </span>
+              <span className="detail-value">
+                {policy.cashlessAvailable === true
+                  ? 'Available at Verified Network Hospitals (Subject to Authorization)'
+                  : policy.cashlessAvailable === false
+                    ? 'Not Available (Reimbursement Only)'
+                    : 'Not specified in document'}
+              </span>
+            </div>
+
+            <div className="detail-row">
+              <span className="detail-label">
+                Network Facility Status
+                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.networkType === 'assumed' ? '#6d28d9' : policy.networkType ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
+                  {policy.confidence?.networkType === 'assumed'
+                    ? 'Assumed Network'
+                    : policy.networkType
+                      ? 'Document-Stated'
+                      : 'Not Classified'}
+                </span>
+              </span>
               <span className="detail-value">
                 {policy.networkType === 'all-network'
                   ? 'All Network Hospitals'
@@ -415,7 +530,7 @@ export default function CoverageSummaryPage({
                     ? 'Empanelled Network Only'
                     : policy.networkType === 'reimbursement-only'
                       ? 'Reimbursement Only'
-                      : 'Not specified in document'}
+                      : 'Standard Hospital Network (Tiering not specified)'}
               </span>
             </div>
           </div>
@@ -468,7 +583,16 @@ export default function CoverageSummaryPage({
             </div>
 
             <div className="detail-row">
-              <span className="detail-label">Restoration Benefit</span>
+              <span className="detail-label">
+                Restoration Benefit
+                <span style={{ display: 'block', fontSize: '10px', color: policy.confidence?.restorationBenefit === 'assumed' ? '#6d28d9' : policy.restorationBenefit !== null && policy.restorationBenefit !== undefined ? '#166534' : 'var(--color-text-muted)', marginTop: '2px' }}>
+                  {policy.confidence?.restorationBenefit === 'assumed'
+                    ? 'Assumed'
+                    : policy.restorationBenefit !== null && policy.restorationBenefit !== undefined
+                      ? 'Document-Stated'
+                      : 'Unspecified'}
+                </span>
+              </span>
               <span className="detail-value">
                 {policy.restorationBenefit === true
                   ? '✓ 100% Sum Insured Restoration'
@@ -594,7 +718,7 @@ export default function CoverageSummaryPage({
       )}
 
       {/* Bottom Action Bar */}
-      <div className="strip" style={{ marginTop: '12px' }}>
+      <div className="strip coverage-action-strip" style={{ marginTop: '12px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           {isPolicyValid ? (
             <>

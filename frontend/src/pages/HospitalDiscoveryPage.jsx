@@ -413,7 +413,7 @@ export default function HospitalDiscoveryPage({
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <div className="discovery-top-actions" style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
             <button
               type="button"
               className="pill-btn pill-btn-ghost"
@@ -1369,7 +1369,7 @@ export default function HospitalDiscoveryPage({
                 </div>
 
                 {/* Card Actions */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '8px', marginTop: '2px' }}>
+                <div className="hospital-card-action-bar" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '8px', marginTop: '2px' }}>
                   <button
                     type="button"
                     className="pill-btn pill-btn-primary"

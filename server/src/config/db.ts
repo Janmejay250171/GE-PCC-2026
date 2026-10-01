@@ -27,8 +27,17 @@ export async function connectDB(): Promise<typeof mongoose> {
       const conn = await mongoose.connect(uri);
       console.log(`[Database] Fallback embedded MongoDB connected successfully at ${uri}`);
       return conn;
-    } catch (memError) {
-      console.error('[Database] Failed to initialize embedded MongoDB:', memError);
+    } catch (memError: any) {
+      console.error('[Database] Failed to initialize embedded MongoDB:', memError?.message || memError);
+      if (process.env.RENDER || process.env.NODE_ENV === 'production') {
+        console.error('[Database] ============================================================');
+        console.error('[Database] DEPLOYMENT NOTICE FOR RENDER:');
+        console.error('[Database] Please provide a valid MONGODB_URI in your Render Dashboard.');
+        console.error('[Database] 1. Create a free M0 cluster on MongoDB Atlas (https://cloud.mongodb.com)');
+        console.error('[Database] 2. Add MONGODB_URI to Render Environment Variables:');
+        console.error('[Database]    mongodb+srv://<user>:<password>@cluster0.mongodb.net/sehatsure?retryWrites=true&w=majority');
+        console.error('[Database] ============================================================');
+      }
       throw error;
     }
   }

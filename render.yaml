@@ -9,6 +9,8 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20.18.0
+      - key: NODE_ENV
+        value: production
       - key: NODE_OPTIONS
         value: --max-old-space-size=450
       - key: MONGODB_URI

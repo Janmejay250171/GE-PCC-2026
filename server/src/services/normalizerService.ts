@@ -133,6 +133,63 @@ export function cleanRawJsonText(raw: string): string {
 }
 
 /**
+ * Cross-references exclusions against waiting periods, sub-limits, and conditional coverage.
+ * Ensures waiting-period coverage, sub-limits, or conditional treatments are not misclassified as permanent exclusions.
+ */
+export function sanitizeExclusions(
+  exclusions: string[],
+  waitingPeriods: any,
+  subLimits: Record<string, number>,
+  rawSnippets?: Record<string, string>
+): string[] {
+  if (!Array.isArray(exclusions) || exclusions.length === 0) return [];
+
+  const subLimitKeys = Object.keys(subLimits || {}).map((k) => k.toLowerCase().trim());
+  const procedureWaitingKeys = Object.keys(waitingPeriods?.procedures || {}).map((k) => k.toLowerCase().trim());
+  const hasMaternityWaiting = Boolean(waitingPeriods?.maternity);
+
+  return exclusions.filter((item) => {
+    const lower = String(item).toLowerCase().trim();
+
+    // 1. Maternity: If subject to a waiting period or sub-limit, NOT a permanent exclusion
+    if (
+      hasMaternityWaiting &&
+      (lower === 'maternity' || lower.includes('maternity') || lower.includes('pregnancy') || lower.includes('childbirth'))
+    ) {
+      return false;
+    }
+
+    // 2. Cataract: If covered under waiting period or sub-limit, NOT a permanent exclusion
+    const isCataract = lower.includes('cataract');
+    const hasCataractWaiting = procedureWaitingKeys.some((k) => k.includes('cataract'));
+    const hasCataractSublimit = subLimitKeys.some((k) => k.includes('cataract'));
+    if (isCataract && (hasCataractWaiting || hasCataractSublimit)) {
+      return false;
+    }
+
+    // 3. Any procedure with a defined waiting period is covered after waiting period, NOT permanently excluded
+    if (procedureWaitingKeys.some((k) => lower === k || lower.includes(k) || k.includes(lower))) {
+      return false;
+    }
+
+    // 4. Any procedure with an explicit positive sub-limit is covered up to the limit, NOT permanently excluded
+    if (subLimitKeys.some((k) => (lower === k || lower.includes(k) || k.includes(lower)) && (subLimits[k] ?? 0) > 0)) {
+      return false;
+    }
+
+    // 5. Dental: If the document indicates conditional accidental dental coverage, do not retain blanket unqualified "dental" as permanent exclusion
+    if (lower === 'dental' || lower === 'dental treatment') {
+      const dentalSnippet = String(rawSnippets?.dental || rawSnippets?.exclusions || '').toLowerCase();
+      if (dentalSnippet.includes('accidental') || dentalSnippet.includes('injury')) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+}
+
+/**
  * Normalizes entire raw extracted policy payload from Gemini.
  * Coerces types, strips extra keys, and applies normalization helpers.
  */
@@ -146,9 +203,19 @@ export function normalizeExtractionPayload(raw: any): Record<string, any> {
     ? raw.insurerAliases.map((a: any) => String(a).trim()).filter(Boolean)
     : [];
   result.planName = typeof raw.planName === 'string' ? raw.planName.trim() : null;
-  result.policyType = ['private', 'corporate', 'pmjay', 'esi'].includes(raw.policyType)
-    ? raw.policyType
+
+  let normType = typeof raw.policyType === 'string' ? raw.policyType.toLowerCase().trim() : null;
+  if (normType === 'family floater' || normType === 'family_floater' || normType === 'family-floater') {
+    normType = 'floater';
+  } else if (normType === 'individual health insurance' || normType === 'individual plan') {
+    normType = 'individual';
+  } else if (normType === 'group' || normType === 'corporate/group') {
+    normType = 'corporate';
+  }
+  result.policyType = ['individual', 'floater', 'corporate', 'pmjay', 'esi', 'private'].includes(normType)
+    ? normType
     : null;
+
   result.policyNumber = typeof raw.policyNumber === 'string' ? raw.policyNumber.trim() : null;
   result.uin = typeof raw.uin === 'string' ? raw.uin.trim() : null;
   result.policyStartDate = typeof raw.policyStartDate === 'string' ? raw.policyStartDate.trim() : null;
@@ -157,6 +224,14 @@ export function normalizeExtractionPayload(raw: any): Record<string, any> {
   result.networkType = ['all-network', 'restricted-network', 'reimbursement-only'].includes(raw.networkType)
     ? raw.networkType
     : null;
+  result.cashlessAvailable =
+    typeof raw.cashlessAvailable === 'boolean'
+      ? raw.cashlessAvailable
+      : raw.cashlessAvailable === 'true'
+      ? true
+      : raw.cashlessAvailable === 'false'
+      ? false
+      : null;
   result.tpa = typeof raw.tpa === 'string' ? raw.tpa.trim() : null;
 
   result.insuredPersons = Array.isArray(raw.insuredPersons)
@@ -191,9 +266,16 @@ export function normalizeExtractionPayload(raw: any): Record<string, any> {
       ? false
       : null;
 
-  // Guard: if snippet indicates non-committal or 50% room sharing rule, do not treat as active proportionate deduction
+  // Guard: if snippet indicates non-committal or 50% room sharing rule WITHOUT active medical fee deduction formula, do not treat as active proportionate deduction
   const propSnippet = String(raw.sourceSnippets?.proportionateDeduction || '').toLowerCase();
-  if (propSnippet.includes('may be subject to') || propSnippet.includes('50% of the eligible')) {
+  if (
+    propSnippet.includes('50% of the eligible') ||
+    (propSnippet.includes('may be subject to') &&
+      !propSnippet.includes('doctor') &&
+      !propSnippet.includes('surgeon') &&
+      !propSnippet.includes('nursing') &&
+      !propSnippet.includes('associated'))
+  ) {
     result.proportionateDeduction = false;
   }
 
@@ -244,6 +326,9 @@ export function normalizeExtractionPayload(raw: any): Record<string, any> {
       procedures: procs
     };
   }
+
+  // Cross-reference exclusions against waiting periods, sub-limits, and conditional coverage
+  result.exclusions = sanitizeExclusions(result.exclusions, result.waitingPeriods, result.subLimits, raw.sourceSnippets);
 
   result.preHospitalizationDays =
     raw.preHospitalizationDays !== undefined && raw.preHospitalizationDays !== null
@@ -316,8 +401,16 @@ export function normalizePartialPolicyUpdate(raw: any): Record<string, any> {
     result.planName = typeof raw.planName === 'string' ? raw.planName.trim() : null;
   }
   if ('policyType' in raw) {
-    result.policyType = ['private', 'corporate', 'pmjay', 'esi'].includes(raw.policyType)
-      ? raw.policyType
+    let normType = typeof raw.policyType === 'string' ? raw.policyType.toLowerCase().trim() : null;
+    if (normType === 'family floater' || normType === 'family_floater' || normType === 'family-floater') {
+      normType = 'floater';
+    } else if (normType === 'individual health insurance' || normType === 'individual plan') {
+      normType = 'individual';
+    } else if (normType === 'group' || normType === 'corporate/group') {
+      normType = 'corporate';
+    }
+    result.policyType = ['individual', 'floater', 'corporate', 'pmjay', 'esi', 'private'].includes(normType)
+      ? normType
       : null;
   }
   if ('policyNumber' in raw) {
@@ -339,6 +432,16 @@ export function normalizePartialPolicyUpdate(raw: any): Record<string, any> {
     result.networkType = ['all-network', 'restricted-network', 'reimbursement-only'].includes(raw.networkType)
       ? raw.networkType
       : null;
+  }
+  if ('cashlessAvailable' in raw) {
+    result.cashlessAvailable =
+      typeof raw.cashlessAvailable === 'boolean'
+        ? raw.cashlessAvailable
+        : raw.cashlessAvailable === 'true'
+        ? true
+        : raw.cashlessAvailable === 'false'
+        ? false
+        : null;
   }
   if ('tpa' in raw) {
     result.tpa = typeof raw.tpa === 'string' ? raw.tpa.trim() : null;

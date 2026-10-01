@@ -1,4 +1,4 @@
-export type PolicyType = 'private' | 'corporate' | 'pmjay' | 'esi';
+export type PolicyType = 'individual' | 'floater' | 'corporate' | 'pmjay' | 'esi' | 'private';
 export type NetworkType = 'all-network' | 'restricted-network' | 'reimbursement-only';
 export type LimitType = 'amount' | 'percent' | 'category' | 'none';
 export type ConfidenceLevel = 'high' | 'medium' | 'low' | 'assumed';
@@ -37,6 +37,7 @@ export interface PolicyDocument {
   policyEndDate: string | null;
   zone: string | null;
   networkType: NetworkType | null;
+  cashlessAvailable?: boolean | null;
   tpa: string | null;
   insuredPersons: InsuredPerson[];
 

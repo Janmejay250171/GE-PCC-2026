@@ -1,0 +1,121 @@
+FICTIONAL INSURANCE POLICY
+PDF EXTRACTION TEST
+30-page synthetic policy designed for SehatSure stress testing
+
+IMPORTANT: ENTIRELY FICTIONAL.
+Not issued by or affiliated with any insurer.
+Not valid for any actual insurance decision or claim.
+
+Test areas:
+PDF extraction
+Tables and repeated values
+Policy limits
+Room-rent/proportionate deduction
+Co-pay and deductible
+Waiting periods
+Exclusions
+Cashless/network wording
+Claims
+Ambiguous/conditional clauses
+Page 2: Policy Schedule
+Core identifiers and limits
+Policyholder: Aarav Mehta (fictional test person).
+Policy type: Individual Health Insurance.
+Policy period: 01 April 2026 to 31 March 2027.
+Page 3: Definitions
+Terms used throughout the policy
+“Cashless” means settlement of an approved eligible amount directly between insurer/TPA and a network hospital, subject to authorization.
+“Network Hospital” means a facility verified as current network for the relevant insurer/TPA and treatment date.
+Page 4: Coverage Summary
+Base hospitalization benefits
+All benefits remain subject to exclusions, waiting periods, limits, deductible and co-payment.
+Page 5: Room Rent, ICU & Proportionate Deduction
+Critical extraction page
+Room rent is payable up to ₹6,000/day. ICU is payable up to ₹12,000/day.
+If the insured voluntarily chooses a room category above the eligible limit, a proportionate deduction MAY apply to associated expenses ONLY where this clause applies and the bill permits calculation.
+For this fictional policy, doctor consultation fees, surgeon fees, nursing charges and procedure charges are subject to the proportionate-deduction clause when billed as room-linked associated expenses. Pharmacy charges and diagnostic tests are not proportionately reduced solely due to room selection unless another limit applies.
+Page 6: Co-payment
+General and benefit-specific rules
+General co-payment is 10% unless a benefit states otherwise. Co-payment is applied after applicable exclusions, sub-limits and non-payable items.
+Page 7: Deductible
+Annual deductible mechanics
+A fixed annual deductible of ₹10,000 applies unless a benefit expressly waives it.
+Page 8: Waiting Periods
+Initial and condition-specific
+Waiting periods are measured from policy commencement unless continuity credit applies.
+Page 9: Pre-existing Diseases
+PED rules
+A pre-existing disease is a condition diagnosed, treated, or advised upon before policy start, subject to the exact definition.
+PED coverage becomes available after 36 months unless continuity credit or another documented exception applies.
+Page 10: Day-care Procedures
+Short-duration procedures
+Covered examples below remain subject to medical necessity and waiting periods.
+Page 11: Pre- and Post-Hospitalization
+Related expenses
+Eligible expenses incurred within 30 days before admission and 60 days after discharge may be considered when directly related to covered hospitalization.
+Page 12: Restoration Benefit
+Restoration after exhaustion
+Base Sum Insured may be restored once during a policy year after exhaustion. Restoration is not available for the same continuous hospitalization episode.
+Page 13: Cumulative Bonus
+Bonus accumulation
+A cumulative bonus of ₹50,000 may be added for each claim-free completed policy year, capped at ₹1,50,000.
+Page 14: No-Claim Bonus Adjustment
+Renewal mechanics
+A claim-sensitive adjustment may apply at renewal according to the prior policy year's claims.
+Page 15: Ambulance Benefits
+Ground and air ambulance
+Road ambulance is covered up to ₹3,000 per hospitalization. Emergency air ambulance is covered up to ₹75,000 per year, subject to authorization and medical necessity.
+Page 16: Mental Health
+Hospitalization benefit
+Eligible mental-health hospitalization is covered up to ₹1,00,000/year, subject to 10% co-payment.
+Page 17: Maternity
+Maternity and newborn
+Maternity benefit has a 24-month waiting period.
+Page 18: Organ Donor
+Donor hospitalization
+Organ donor hospitalization is covered up to ₹50,000 when recipient treatment is admissible and legal/medical requirements are satisfied.
+Page 19: Domiciliary Hospitalization
+Treatment at home
+Covered up to 50% of base Sum Insured where medically necessary because transfer is impossible or suitable hospital capacity is unavailable, subject to documentation.
+Page 20: Home Nursing
+Post-discharge nursing
+Home nursing is covered at ₹1,500/day for up to 30 days after eligible hospitalization, subject to prescription.
+Page 21: Preventive Health Check
+Annual benefit
+One preventive health check is available per policy year after the initial 30-day period.
+Page 22: General Exclusions
+Major exclusions
+The following are excluded unless specifically endorsed.
+Page 23: Additional Exclusions
+Similar-looking covered/uncovered items
+These examples are designed to test extraction of conditional coverage.
+Page 24: Network Hospital & Cashless
+Network status and authorization
+Cashless service is available only at a hospital verified as current network and where authorization is granted.
+An old directory or historical PDF does not by itself prove an active cashless tie-up on the treatment date.
+Page 25: Claims Procedure
+Claim filing workflow
+The insured should notify insurer/TPA promptly and submit required records.
+Page 26: Non-Network Reimbursement
+Reimbursement treatment
+At a non-network hospital, the insured may pay first and later submit reimbursement. Admissibility remains subject to policy terms.
+Page 27: Claim Calculation Example
+Synthetic worked example
+Assume a network hospitalization produces ₹1,50,000 of otherwise eligible expenses. Deductible is ₹10,000 and co-payment is 10%.
+Page 28: Room-Rent Calculation Example
+Synthetic proportionate deduction example
+Eligible room is ₹6,000/day; selected room is ₹9,000/day; surgeon fee is ₹30,000. Ratio = 6,000/9,000 = 66.67%.
+Page 29: Policy Renewal
+Renewal and continuity
+Renewal is subject to applicable terms, premium payment, product availability and regulatory requirements. Continuity may preserve accrued waiting-period credit.
+Page 30: Important Conditions
+Cross-reference and interpretation
+If provisions appear to conflict, the specific benefit provision applies unless a later endorsement changes it.
+Limits are ceilings, not promises of payment. Cashless authorization is not final confirmation that every final-bill item is payable.
+Page 31: Endorsements & Test Notes
+Final cross-check page
+E-01: Base Sum Insured remains ₹7,50,000.
+E-02: General co-payment remains 10%; non-network is 20% unless emergency exception applies.
+E-03: Room rent remains ₹6,000/day; ICU ₹12,000/day.
+E-04: Proportionate deduction applies to doctor consultation, surgeon, nursing and procedure charges when billed as room-linked associated expenses, as described on Page 5.
+E-05: This entire document is synthetic test content and NOT a real policy.

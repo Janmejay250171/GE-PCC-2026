@@ -91,7 +91,7 @@ export default function WhyExplanationModal({ explanation, onClose, provenance =
           </div>
 
           {/* Structured Side-by-Side Comparison */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+          <div className="why-modal-comparison-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div style={{ background: '#f8fafc', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '12px 14px' }}>
               <div style={{ fontSize: '10px', textTransform: 'uppercase', fontWeight: 700, color: 'var(--color-text-muted)', letterSpacing: '0.05em' }}>
                 {t('whyModal.policyDocClause', 'Policy Document Clause')}

@@ -28,31 +28,42 @@ RULES
    different co-pay for non-network hospitals, put it in "nonNetworkCopay".
    Put conditional co-pays (age-based, zone-based) in copayConditions.
 6. "proportionateDeduction": Set to true ONLY if the document explicitly mandates that associated medical expenses, doctor fees, or surgery charges shall be paid in proportion to the eligible room rent limit. If the document states a specific room-sharing rule (e.g. insurer pays 50% of eligible room amount) or uses non-committal/speculative language like "may be subject to" without an active deduction formula across medical fees, set "proportionateDeduction" to false.
-7. exclusions: list all clinical departments, medical specialties, or specific procedures that are excluded or not covered under this policy (e.g. cardiology, neurology, orthopedics, oncology, general surgery, gynecology, urology, maternity, dental, cataract, cosmetic, etc.). For standard non-medical/statutory exclusions (like war, criminal acts, self-inflicted injury, alcohol/drug abuse), set "hasOtherExclusions" to true rather than listing them individually.
+7. exclusions: list ONLY medical procedures, treatments, or specialties that are PERMANENTLY and UNCONDITIONALLY EXCLUDED from all coverage.
+   CRITICAL RULES FOR EXCLUSIONS:
+   - A treatment may appear in exclusions ONLY when the document explicitly establishes that it is permanently excluded without any conditional coverage.
+   - Cross-reference the entire document before deciding that a treatment is permanently excluded.
+   - Waiting-period coverage must NOT be classified as a permanent exclusion. If a treatment is covered after a waiting period (e.g. covered after 24 or 36 months), place it in "waitingPeriods" instead of "exclusions".
+   - Sub-limit or capped coverage must NOT be classified as a permanent exclusion. If a treatment is covered up to a monetary limit (e.g. covered up to ₹40,000), place it in "subLimits" instead of "exclusions".
+   - Conditional coverage must NOT be classified as a permanent exclusion. If a treatment is covered under specific conditions (e.g. accidental injury dental coverage), do NOT list it as a universal exclusion.
+   - Only list treatments that are completely excluded across all provisions (such as routine cosmetic surgery, experimental or unproven therapies).
+   - For standard non-medical/statutory exclusions (like war, criminal acts, self-inflicted injury, alcohol/drug abuse), set "hasOtherExclusions" to true rather than listing them in "exclusions".
 8. Amounts: return plain integers in rupees. "3 Lakhs" -> 300000. No symbols,
    no commas, no strings.
 9. Percentages: plain numbers. "10%" -> 10.
 10. Dates: "YYYY-MM-DD".
-11. policyType: "private" for retail individual/family plans, "corporate" for
-    group or employer plans, "pmjay" for Ayushman Bharat, "esi" for ESI/ESIC.
+11. policyType: "individual" for individual health insurance plans, "floater" for family floater plans, "corporate" for group or employer plans, "pmjay" for Ayushman Bharat PM-JAY, "esi" for ESI/ESIC, or "private" if retail but unspecified whether individual or floater. Never guess "floater" if the document explicitly states "Individual Health Insurance".
 12. insurerAliases: every longer or legal form of the insurer's name that
     appears in the document.
 13. deductible: compulsory deductible amount in rupees. If the policy states Nil,
     None, Zero, or if no deductible is mentioned in the document, set deductible to 0.
     Only set to a positive integer if a specific compulsory deductible is explicitly mandated.
+14. restorationBenefit: Set to true ONLY if the document explicitly mentions restoration, recharge, refill, reset, or automatic restoration of the sum insured upon exhaustion. Set to false if the document explicitly states that restoration is not provided/excluded. If not mentioned in the document, set to null. Never infer or guess restoration benefit if the document does not state it.
+15. cashlessAvailable: Set to true if cashless facility or cashless settlement is explicitly stated as available at network/empanelled hospitals (even if subject to pre-authorization). Set to false if cashless is explicitly excluded or reimbursement-only. If not mentioned in the document, set to null.
+16. networkType: Set to "all-network" ONLY if the policy explicitly defines an all-hospital or unrestricted network; "restricted-network" ONLY if the policy explicitly defines a tiered, restricted, or preferential list of empanelled network hospitals; "reimbursement-only" if no network facility exists; or null if the document does not classify the network into a specific tier. Do NOT infer "all-network" or "restricted-network" merely because cashless facility or network hospitals are mentioned.
 
 SCHEMA
 {
   "insurer": "string or null",
   "insurerAliases": ["string"],
   "planName": "string or null",
-  "policyType": "private | corporate | pmjay | esi | null",
+  "policyType": "individual | floater | corporate | pmjay | esi | private | null",
   "policyNumber": "string or null",
   "uin": "string or null",
   "policyStartDate": "YYYY-MM-DD or null",
   "policyEndDate": "YYYY-MM-DD or null",
   "zone": "Zone A | Zone B | Zone C | null",
   "networkType": "all-network | restricted-network | reimbursement-only | null",
+  "cashlessAvailable": true,
   "tpa": "string or null",
   "insuredPersons": [{ "name": "string", "age": 0, "relation": "string" }],
   "sumInsured": "number (in rupees) or null",
@@ -64,7 +75,7 @@ SCHEMA
   "deductible": 0,
   "proportionateDeduction": null,
   "subLimits": { "procedureName": 0 },
-  "restorationBenefit": null,
+  "restorationBenefit": true,
   "cumulativeBonus": null,
   "exclusions": ["string"],
   "hasOtherExclusions": null,

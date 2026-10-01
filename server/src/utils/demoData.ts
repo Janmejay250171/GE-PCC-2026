@@ -33,6 +33,7 @@ export const DEMO_POLICIES: DemoPolicyItem[] = [
       policyEndDate: '2027-03-31',
       zone: 'Zone B',
       networkType: 'all-network',
+      cashlessAvailable: true,
       tpa: 'Medi Assist',
       insuredPersons: [{ name: 'R. Sharma', age: 52, relation: 'self' }],
 
@@ -107,6 +108,7 @@ export const DEMO_POLICIES: DemoPolicyItem[] = [
       policyEndDate: '2026-12-31',
       zone: 'Zone A',
       networkType: 'all-network',
+      cashlessAvailable: true,
       tpa: 'Vidal Health TPA',
       insuredPersons: [
         { name: 'Amit Verma', age: 34, relation: 'self' },
@@ -181,6 +183,7 @@ export const DEMO_POLICIES: DemoPolicyItem[] = [
       policyEndDate: '2026-12-31',
       zone: 'Zone B',
       networkType: 'restricted-network',
+      cashlessAvailable: true,
       tpa: 'State Health Agency Karnataka',
       insuredPersons: [{ name: 'K. Gowda', age: 48, relation: 'self' }],
 
@@ -249,6 +252,7 @@ export const DEMO_POLICIES: DemoPolicyItem[] = [
       policyEndDate: '2027-03-31',
       zone: 'Zone B',
       networkType: 'restricted-network',
+      cashlessAvailable: true,
       tpa: 'ESIC Medical Directorate',
       insuredPersons: [{ name: 'M. Sundaram', age: 39, relation: 'self' }],
 

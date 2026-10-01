@@ -13,7 +13,7 @@
     "dev:server": "npm --prefix server run dev",
     "dev:client": "npm --prefix frontend run dev",
     "build": "npm --prefix server run build && npm --prefix frontend run build",
-    "build:render": "npm install && npm --prefix server install && npm --prefix frontend install && npm run build",
+    "build:render": "npm install --include=dev && npm --prefix server install --include=dev && npm --prefix frontend install --include=dev && npm run build",
     "start": "node --max-old-space-size=450 server/dist/index.js",
     "gen:policies": "npm --prefix server run gen:policies",
     "seed": "npm --prefix server run seed",

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { User as UserIcon } from 'lucide-react';
+import { User as UserIcon, Menu, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import { useAuth } from '../context/AuthContext';
 
@@ -17,6 +17,12 @@ export default function Navbar({
 }) {
   const { t } = useTranslation();
   const { user } = useAuth();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleNavClick = (callback) => {
+    setMobileMenuOpen(false);
+    if (callback) callback();
+  };
 
   return (
     <header className="navbar-wrapper">
@@ -33,7 +39,8 @@ export default function Navbar({
           </div>
         </div>
 
-        <div className="nav-links">
+        {/* Desktop Navigation Links */}
+        <div className="nav-links desktop-nav-links">
           <LanguageSelector compact />
 
           <button
@@ -135,6 +142,119 @@ export default function Navbar({
             >
               <UserIcon size={14} />
               <span>Log In</span>
+            </button>
+          )}
+        </div>
+
+        {/* Mobile Navbar Controls (Visible <= 920px) */}
+        <div className="mobile-nav-controls">
+          <LanguageSelector compact />
+
+          {user ? (
+            <button
+              type="button"
+              onClick={onOpenProfile}
+              className="mobile-avatar-btn"
+              title={`View Profile: ${user.name}`}
+            >
+              {user.name ? user.name[0].toUpperCase() : 'U'}
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={onOpenAuth}
+              className="pill-btn pill-btn-ghost mobile-login-btn"
+              title="Sign in or create account"
+            >
+              <UserIcon size={15} />
+            </button>
+          )}
+
+          <button
+            type="button"
+            className="mobile-menu-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Collapsible Navigation Drawer */}
+      <div className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-nav-drawer-content">
+          <button
+            type="button"
+            onClick={() => handleNavClick(onGoHome)}
+            className={`mobile-nav-item ${currentView === 'upload' ? 'active' : ''}`}
+          >
+            {t('navbar.uploadPolicy')}
+          </button>
+
+          {activePolicy && (
+            <button
+              type="button"
+              onClick={() => handleNavClick(onBackToPolicy)}
+              className={`mobile-nav-item ${currentView === 'summary' ? 'active' : ''}`}
+            >
+              {t('navbar.policySummary')}
+            </button>
+          )}
+
+          {activePolicy && activePolicy.confirmedByUser && (
+            <>
+              <button
+                type="button"
+                onClick={() => handleNavClick(onGoToHospitals)}
+                className={`mobile-nav-item ${currentView === 'discovery' ? 'active' : ''}`}
+              >
+                {t('navbar.hospitals')}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavClick(onGoToJourney)}
+                className={`mobile-nav-item ${currentView === 'journey' ? 'active' : ''}`}
+              >
+                {t('navbar.careJourney')}
+              </button>
+            </>
+          )}
+
+          <div className="mobile-nav-divider" />
+
+          {currentView !== 'upload' ? (
+            <button
+              type="button"
+              onClick={() => handleNavClick(onResetPolicy || onGoHome)}
+              className="pill-btn pill-btn-ghost mobile-cta-btn"
+            >
+              {t('navbar.changePolicy')}
+            </button>
+          ) : (
+            <a
+              href="#demo-section"
+              onClick={() => setMobileMenuOpen(false)}
+              className="pill-btn pill-btn-primary mobile-cta-btn"
+            >
+              {t('navbar.demoPolicies')}
+            </a>
+          )}
+
+          {user && (
+            <button
+              type="button"
+              onClick={() => handleNavClick(onOpenProfile)}
+              className="mobile-profile-card"
+            >
+              <div className="mobile-profile-avatar">
+                {user.name ? user.name[0].toUpperCase() : 'U'}
+              </div>
+              <div className="mobile-profile-info">
+                <span className="mobile-profile-name">{user.name}</span>
+                <span className="mobile-profile-email">{user.email}</span>
+              </div>
             </button>
           )}
         </div>

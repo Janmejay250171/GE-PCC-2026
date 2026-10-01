@@ -66,6 +66,7 @@ async function resolvePolicy(policyId?: string, fallbackPolicy?: Partial<PolicyD
     policyEndDate: '2027-03-31',
     zone: 'Zone B',
     networkType: 'all-network',
+    cashlessAvailable: true,
     tpa: 'Medi Assist',
     insuredPersons: [],
     icuLimit: { type: 'percent', value: 2 },

@@ -295,6 +295,7 @@ export default function ProfileModal({
                       <div
                         key={p._id || p.planName}
                         onClick={() => handlePolicyCardClick(p)}
+                        className="profile-policy-item"
                         style={{
                           border: isCurrent ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
                           background: isCurrent ? '#f8fafc' : '#ffffff',
@@ -303,6 +304,7 @@ export default function ProfileModal({
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
+                          flexWrap: 'wrap',
                           gap: '16px',
                           cursor: 'pointer',
                           transition: 'all 0.15s ease',
@@ -444,7 +446,7 @@ export default function ProfileModal({
                   </p>
                 </div>
               ) : (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '14px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '14px' }}>
                   {savedHospitals.map((hosp) => (
                     <div
                       key={hosp.hospitalKey || hosp.hospital_name}

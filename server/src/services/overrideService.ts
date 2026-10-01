@@ -28,6 +28,11 @@ export function applyTier2Defaults(policy: Partial<PolicyDocument>): void {
     policy.networkType = null;
   }
 
+  // cashlessAvailable -> null if missing
+  if (policy.cashlessAvailable === undefined) {
+    policy.cashlessAvailable = null;
+  }
+
   // zone -> null
   if (policy.zone === undefined) {
     policy.zone = null;
@@ -87,6 +92,10 @@ export function applySchemeOverrides(policy: Partial<PolicyDocument>): void {
 
     policy.confidence['networkType'] = 'assumed';
     policy.sourceSnippets['networkType'] = 'PM-JAY cashless treatment valid at empanelled hospitals only';
+
+    policy.cashlessAvailable = true;
+    policy.confidence['cashlessAvailable'] = 'assumed';
+    policy.sourceSnippets['cashlessAvailable'] = '100% cashless hospitalization at empanelled network hospitals';
   }
 
   if (policy.policyType === 'esi') {
@@ -118,5 +127,9 @@ export function applySchemeOverrides(policy: Partial<PolicyDocument>): void {
 
     policy.confidence['networkType'] = 'assumed';
     policy.sourceSnippets['networkType'] = 'Restricted to ESIC network and authorized tie-up institutions';
+
+    policy.cashlessAvailable = true;
+    policy.confidence['cashlessAvailable'] = 'assumed';
+    policy.sourceSnippets['cashlessAvailable'] = '100% cashless medical care at ESIC facilities and tie-up institutions';
   }
 }

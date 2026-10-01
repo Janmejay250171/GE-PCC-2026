@@ -98,6 +98,10 @@ if (frontendDistPath) {
     if (req.path.startsWith('/api') || req.path.startsWith('/mock-policies') || req.path.startsWith('/uploads')) {
       return next();
     }
+    // Return 404 for missing static files with extensions instead of returning index.html
+    if (path.extname(req.path)) {
+      return res.status(404).end();
+    }
     const indexPath = path.join(frontendDistPath!, 'index.html');
     if (fs.existsSync(indexPath)) {
       return res.sendFile(indexPath);
@@ -125,8 +129,8 @@ async function startServer() {
       console.log('[Server] Demo policies seeded successfully.');
     }
 
-    app.listen(config.port, () => {
-      console.log(`[Server] SehatSure API running on port ${config.port}`);
+    app.listen(config.port, '0.0.0.0', () => {
+      console.log(`[Server] SehatSure API running on port ${config.port} (0.0.0.0)`);
       console.log(`[Server] Client origin allowed: ${config.clientUrl}`);
     });
   } catch (err) {

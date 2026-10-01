@@ -49,7 +49,7 @@ const PolicySchema = new Schema<PolicyModelType>(
     planName: { type: String, default: null },
     policyType: {
       type: String,
-      enum: ['private', 'corporate', 'pmjay', 'esi', null],
+      enum: ['individual', 'floater', 'private', 'corporate', 'pmjay', 'esi', null],
       default: null
     },
     policyNumber: { type: String, default: null },
@@ -62,6 +62,7 @@ const PolicySchema = new Schema<PolicyModelType>(
       enum: ['all-network', 'restricted-network', 'reimbursement-only', null],
       default: null
     },
+    cashlessAvailable: { type: Boolean, default: null },
     tpa: { type: String, default: null },
     insuredPersons: { type: [InsuredPersonSchema], default: [] },
 
