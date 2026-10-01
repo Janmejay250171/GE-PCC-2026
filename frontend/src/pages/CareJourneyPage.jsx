@@ -680,7 +680,7 @@ export default function CareJourneyPage({
         </div>
 
         {/* Bottom Navigation for Stages */}
-        <div style={{ display: 'flex', borderTop: '1px solid var(--color-border)', paddingTop: '20px', flexWrap: 'wrap', gap: '12px', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="journey-stage-nav-bar" style={{ display: 'flex', borderTop: '1px solid var(--color-border)', paddingTop: '20px', flexWrap: 'wrap', gap: '12px', justifyContent: 'space-between', alignItems: 'center' }}>
           {activeStage.stageNumber > 1 ? (
             <button
               type="button"

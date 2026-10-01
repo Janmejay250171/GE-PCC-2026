@@ -153,7 +153,7 @@ export default function CareJourneySimulator({
           {t('simulator.stepTriggersTitle', 'Interactive Step Triggers (Click to inject simulated event):')}
         </div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <div className="simulator-btn-strip" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
           <button
             type="button"
             className="pill-btn pill-btn-ghost pill-btn-sm"

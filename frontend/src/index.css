@@ -64,6 +64,14 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  -webkit-text-size-adjust: 100%;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 body {
@@ -757,15 +765,30 @@ main {
   gap: 20px;
 }
 
+@media (max-width: 1080px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
 .hospitals-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .hospitals-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
@@ -1873,25 +1896,19 @@ main {
   justify-content: space-between;
   width: 100%;
   min-height: 28px;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .hospital-card-header-left {
   display: flex;
   align-items: center;
   gap: 5px;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  flex-shrink: 0;
+  flex-wrap: wrap;
   z-index: 1;
 }
 
 .hospital-card-header-middle {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1910,23 +1927,45 @@ main {
   z-index: 1;
 }
 
-@media (max-width: 520px) {
+@media (min-width: 1201px) {
+  .hospital-card-header {
+    flex-wrap: nowrap;
+  }
+
+  .hospital-card-header-middle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 580px) {
   .hospital-card-header {
     flex-wrap: wrap;
     gap: 8px;
   }
+
+  .hospital-card-header-left {
+    order: 1;
+    max-width: calc(100% - 75px);
+  }
+
+  .hospital-card-header-right {
+    order: 2;
+    margin-left: auto;
+  }
+
   .hospital-card-header-middle {
-    position: static;
-    transform: none;
     order: 3;
     width: 100%;
     margin-top: 2px;
   }
-  .hospital-card-header-left {
-    order: 1;
-  }
-  .hospital-card-header-right {
-    order: 2;
+
+  .hospital-card-header-middle button,
+  .hospital-card-header-middle .pill-label {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -1975,8 +2014,8 @@ main {
   }
 }
 
-/* Hospital Discovery Actions */
-@media (max-width: 520px) {
+/* Hospital Discovery Actions & Filter Toolbar */
+@media (max-width: 580px) {
   .hospital-card-action-bar {
     grid-template-columns: 1fr !important;
     gap: 8px;
@@ -1995,6 +2034,39 @@ main {
     flex: 1;
     justify-content: center;
   }
+
+  .discovery-filter-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .discovery-search-wrapper {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .role-tabs {
+    width: 100% !important;
+    display: flex !important;
+    margin-bottom: 0 !important;
+  }
+
+  .role-tab {
+    flex: 1 !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 8px 6px !important;
+  }
+}
+
+/* Hospital Card Financial Meta Row */
+@media (max-width: 440px) {
+  .hospital-financial-meta-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
 }
 
 /* Why Explanation Modal Grid */
@@ -2010,7 +2082,47 @@ main {
   }
 }
 
-/* Profile Policy Card */
+/* Care Journey Tracker Responsive */
+@media (max-width: 640px) {
+  .journey-stage-nav-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .journey-stage-nav-bar .pill-btn {
+    width: 100% !important;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 580px) {
+  .simulator-btn-strip {
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .simulator-btn-strip .pill-btn {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* Upload Page Login Notice */
+@media (max-width: 540px) {
+  .upload-login-notice {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+  }
+
+  .upload-login-notice .pill-btn {
+    width: 100% !important;
+    justify-content: center;
+  }
+}
+
+/* Profile Policy Card & Profile Modal */
 @media (max-width: 560px) {
   .profile-policy-item {
     flex-direction: column;
@@ -2021,6 +2133,31 @@ main {
   .profile-policy-item > div:last-child {
     width: 100%;
     justify-content: flex-end;
+  }
+
+  .profile-modal-dialog {
+    padding: 18px 14px !important;
+    width: 95vw !important;
+    max-height: 94vh !important;
+  }
+
+  .profile-modal-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .profile-modal-header-actions {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .auth-modal-dialog {
+    padding: 20px 16px !important;
+    width: 95vw !important;
+    margin: 0 auto;
   }
 }
 
@@ -2035,6 +2172,10 @@ main {
   .detail-value {
     text-align: left;
     width: 100%;
+  }
+
+  .form-alert {
+    flex-wrap: wrap !important;
   }
 }
 
@@ -2070,6 +2211,34 @@ main {
 
 /* Small Device General Refinements */
 @media (max-width: 480px) {
+  .navbar-inner,
+  .navbar {
+    padding: 10px 12px !important;
+    gap: 6px !important;
+  }
+
+  .brand {
+    gap: 8px !important;
+  }
+
+  .brand-logo-img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .brand-name {
+    font-size: 16px !important;
+  }
+
+  .mobile-nav-controls {
+    gap: 6px !important;
+  }
+
+  .mobile-menu-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
   .page {
     padding: 12px 10px;
   }
@@ -2095,7 +2264,43 @@ main {
   }
 
   .modern-upload-card {
-    padding: 36px 16px !important;
+    padding: 32px 14px !important;
+  }
+
+  .modern-upload-card .pill-btn {
+    width: 100% !important;
+  }
+
+  .hiw-db-image-container {
+    height: 220px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-inner,
+  .navbar {
+    padding: 8px 8px !important;
+    gap: 4px !important;
+  }
+
+  .brand-name {
+    font-size: 14.5px !important;
+  }
+
+  .brand-logo-img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .mobile-menu-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .mobile-avatar-btn {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 11px !important;
   }
 }
 

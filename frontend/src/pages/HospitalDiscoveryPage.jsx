@@ -771,9 +771,9 @@ export default function HospitalDiscoveryPage({
 
         {/* Secondary: Search bar + quick filters */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', paddingTop: '8px', borderTop: '1px solid var(--color-border)' }}>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+          <div className="discovery-filter-toolbar" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
             {/* Search Input */}
-            <div style={{ flex: 1, minWidth: '260px', position: 'relative' }}>
+            <div className="discovery-search-wrapper" style={{ flex: 1, minWidth: '260px', position: 'relative' }}>
               <input
                 type="text"
                 className="field-input"
@@ -1328,7 +1328,7 @@ export default function HospitalDiscoveryPage({
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12.5px', color: '#0f172a', borderTop: '1px solid #e2e8f0', paddingTop: '8px', lineHeight: 1.45 }}>
+                  <div className="hospital-financial-meta-row" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12.5px', color: '#0f172a', borderTop: '1px solid #e2e8f0', paddingTop: '8px', lineHeight: 1.45 }}>
                     <span>
                       {isVerified ? (
                         <>{t('discovery.hospitalCard.estInsurerShare')} <strong style={{ color: '#15803d' }}>{formatINR(score.insurerEstimatedShare)}</strong></>

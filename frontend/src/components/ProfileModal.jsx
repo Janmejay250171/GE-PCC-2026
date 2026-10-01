@@ -98,7 +98,7 @@ export default function ProfileModal({
       onClick={onClose}
     >
       <div
-        className="feature-card"
+        className="feature-card profile-modal-dialog"
         style={{
           width: '92vw',
           maxWidth: '850px',
@@ -115,7 +115,7 @@ export default function ProfileModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with User Info */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '18px', borderBottom: '1px solid var(--color-border)' }}>
+        <div className="profile-modal-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '18px', borderBottom: '1px solid var(--color-border)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <div
               style={{
@@ -150,7 +150,7 @@ export default function ProfileModal({
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div className="profile-modal-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <button
               type="button"
               onClick={handleLogout}

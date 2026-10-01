@@ -112,7 +112,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', prom
       onClick={onClose}
     >
       <div
-        className="feature-card"
+        className="feature-card auth-modal-dialog"
         style={{
           width: '100%',
           maxWidth: '440px',

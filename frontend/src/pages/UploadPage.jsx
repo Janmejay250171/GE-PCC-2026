@@ -135,6 +135,7 @@ export default function UploadPage({ onPolicyLoaded, onRequireAuth }) {
       {/* Login Required Notice when logged out */}
       {!user && (
         <div
+          className="upload-login-notice"
           style={{
             background: 'var(--color-teal-light)',
             border: '1px solid var(--color-teal-border)',
