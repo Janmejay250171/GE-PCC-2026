@@ -89,7 +89,7 @@ def build_part5(doc: Document):
          "The engine recalculates financial exposure in real time, generates alerts, and provides a 'Why Am I Seeing This?' breakdown explaining the exact policy clause governing the event."),
 
         ("7:45 - 8:45 | LOCALIZATION & PRECISION HEALTHCARE IN INDIA",
-         "Because precision care must be inclusive, SehatSure features complete multilingual localization in English, Hindi, and [EMPHASIZE] Kannada, honoring the local linguistic community of Bengaluru and Karnataka where GE HealthCare's engineering hub thrives. [SHOW: Language switch]\n\n"
+         "Because precision care must be inclusive, SehatSure features complete multilingual localization in English, Hindi, Kannada, and Marathi, honoring key linguistic communities and healthcare hubs across India. [SHOW: Language switch]\n\n"
          "We also support statutory government schemes: Ayushman Bharat PM-JAY and ESI, automatically enforcing 100% cashless treatment rules without requiring private policy complexity."),
 
         ("8:45 - 9:30 | CYBERSECURITY, ETHICS & BOUNDARIES",

@@ -46,7 +46,7 @@ def build_part3(doc: Document):
     add_heading_2(doc, "12.1 Modern Architecture & Design System")
     add_bullet(doc, "Framework & Build", "React 18.3.1 with Vite 5.4.8 for lightning-fast HMR and bundle optimization.")
     add_bullet(doc, "Styling & Design Tokens", "Styled with a rich, bespoke Vanilla CSS design system in frontend/src/index.css (31KB). Uses HSL custom properties (--color-primary, --color-surface, --radius-md, glassmorphism card elevation) eliminating bloated external utility dependencies.")
-    add_bullet(doc, "Multilingual Localization", "i18next with react-i18next supporting English (en.json), Hindi (hi.json), and Kannada (kn.json). Crucial local resonance for GE HealthCare John F. Welch Technology Centre in Bengaluru!")
+    add_bullet(doc, "Multilingual Localization", "i18next with react-i18next supporting English (en.json), Hindi (hi.json), Kannada (kn.json), and Marathi (mr.json). Crucial local resonance for patients across key medical hubs!")
     add_bullet(doc, "Persistent Session State", "App.jsx synchronizes active session state (activePolicy, currentView, journeyHospital) to localStorage under 'sehatsure_session', ensuring user work is never lost on refresh.")
 
     add_heading_2(doc, "12.2 Ten Strongest Frontend Implementation Points")
@@ -70,7 +70,7 @@ def build_part3(doc: Document):
         ["'City list is long'", "54,000 hospitals across India", "We implemented a debounce autocomplete search with remote fetchCities() to filter cities in <200ms."],
         ["'Procedures limited to dataset'", "Benchmark CSV boundaries", "We bound procedures to validated cost benchmarks to prevent hallucinations of non-standard clinical costs."],
         ["'No map view pin clusters'", "Performance on mobile/booth", "Leaflet/Mapbox with 54k pins causes browser lag. We prioritize high-speed card search with direct Google Maps links."],
-        ["'Language selector only has 3 languages'", "Regional focus", "We localized for English, Hindi, and Kannada specifically targeting India and Karnataka (home of GE HealthCare India)."],
+        ["'Language selector only has 4 languages'", "Regional focus", "We localized for English, Hindi, Kannada, and Marathi specifically targeting India's key healthcare hubs."],
         ["'Session stored in localStorage'", "Demo resilience", "Ensures judges can refresh the booth browser without losing uploaded policy progress."],
         ["'No multi-policy comparison tab'", "Scope prioritization", "We prioritized deep end-to-end guidance for one admission over shallow comparisons across multiple policies."],
         ["'Manual confirmation required'", "Healthcare safety standard", "We deliberately refuse to automate 100% of policy confirmation; clinical and financial safety mandates human validation."]

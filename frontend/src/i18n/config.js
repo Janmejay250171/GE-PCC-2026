@@ -3,11 +3,13 @@ import { initReactI18next } from 'react-i18next';
 import en from './locales/en.json';
 import hi from './locales/hi.json';
 import kn from './locales/kn.json';
+import mr from './locales/mr.json';
 
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', label: 'English', nativeName: 'English' },
   { code: 'hi', label: 'Hindi', nativeName: 'हिन्दी' },
-  { code: 'kn', label: 'Kannada', nativeName: 'ಕನ್ನಡ' }
+  { code: 'kn', label: 'Kannada', nativeName: 'ಕನ್ನಡ' },
+  { code: 'mr', label: 'Marathi', nativeName: 'मराठी' }
 ];
 
 const STORAGE_KEY = 'sehatsure_language';
@@ -33,7 +35,8 @@ i18n
     resources: {
       en: { translation: en },
       hi: { translation: hi },
-      kn: { translation: kn }
+      kn: { translation: kn },
+      mr: { translation: mr }
     },
     lng: initialLng,
     fallbackLng: 'en',
